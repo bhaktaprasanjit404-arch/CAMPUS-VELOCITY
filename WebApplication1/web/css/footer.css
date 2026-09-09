@@ -12,143 +12,242 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 /* =========================================================
    FOOTER
 ========================================================= */
+/* =========================================================
+   CAPACITY CONNECT - FOOTER CSS
+   ========================================================= */
 
 .main-footer {
-    background: #0c1424;
-    color: #ffffff;
+    background: #081225;
+    color: #fff;
 }
 
+/* =========================
+   FOOTER MAIN
+   ========================= */
+
 .footer-main {
-    padding: 65px 0 45px;
+    padding: 75px 0 55px;
 }
 
 .footer-container {
-    width: min(1180px, 92%);
+    width: min(1250px, 90%);
     margin: auto;
-
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1.3fr;
-    gap: 35px;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 55px;
+}
+
+/* =========================
+   FOOTER BRAND
+   ========================= */
+
+.footer-brand {
+    max-width: 330px;
 }
 
 .footer-logo {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
+    margin-bottom: 20px;
+    text-decoration: none;
 }
 
-.footer-brand > p {
-    margin-top: 18px;
-    max-width: 320px;
-    color: #9ca8ba;
-    font-size: 13px;
+.footer-logo .logo-icon {
+    width: 43px;
+    height: 43px;
+    background: linear-gradient(135deg, #1455d9, #6b7cff);
+    color: #fff;
 }
+
+.footer-logo .logo-title {
+    color: #fff;
+}
+
+.footer-logo .logo-subtitle {
+    color: #7fa1ff;
+}
+
+.footer-brand p {
+    margin: 0;
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* =========================
+   SOCIAL
+   ========================= */
 
 .footer-social {
     display: flex;
     gap: 9px;
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .footer-social a {
-    width: 35px;
-    height: 35px;
-    border: 1px solid #26334a;
-    border-radius: 8px;
-
+    width: 37px;
+    height: 37px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: #cbd4e2;
-}
-
-.footer-social a:hover {
-    background: #1455d9;
-    border-color: #1455d9;
-    color: #ffffff;
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-column h3 {
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.footer-column a {
-    color: #9ca8ba;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 11px;
+    color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.04);
+    text-decoration: none;
     font-size: 13px;
 }
 
+.footer-social a:hover {
+    color: #fff;
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* =========================
+   FOOTER COLUMNS
+   ========================= */
+
+.footer-column h3 {
+    margin: 0 0 20px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 850;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: rgba(255,255,255,0.53);
+    text-decoration: none;
+    font-size: 11px;
+}
+
 .footer-column a:hover {
-    color: #ffffff;
+    color: #fff;
+    padding-left: 4px;
+}
+
+/* =========================
+   CONTACT
+   ========================= */
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .contact-item {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    color: #9ca8ba;
-    font-size: 13px;
+    gap: 11px;
+    color: rgba(255,255,255,0.55);
+    font-size: 11px;
+    line-height: 1.6;
 }
 
 .contact-item i {
-    color: #4e8aff;
-    margin-top: 5px;
+    width: 29px;
+    height: 29px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: rgba(20,85,217,0.14);
+    color: #80a2ff;
+    font-size: 11px;
 }
 
+/* =========================
+   FOOTER BOTTOM
+   ========================= */
+
 .footer-bottom {
-    border-top: 1px solid #202c40;
-    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .footer-bottom-container {
-    width: min(1180px, 92%);
+    width: min(1250px, 90%);
+    min-height: 70px;
     margin: auto;
-
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 20px;
 }
 
-.footer-bottom p,
-.footer-bottom a {
-    color: #78869c;
-    font-size: 12px;
+.footer-bottom-container p {
+    margin: 0;
+    color: rgba(255,255,255,0.38);
+    font-size: 10px;
 }
 
 .footer-bottom-links {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 22px;
 }
 
-@media (max-width: 850px) {
+.footer-bottom-links a {
+    color: rgba(255,255,255,0.42);
+    text-decoration: none;
+    font-size: 10px;
+}
+
+.footer-bottom-links a:hover {
+    color: #fff;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 1000px) {
 
     .footer-container {
         grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
+        gap: 45px 35px;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 650px) {
+
+    .footer-main {
+        padding: 60px 0 45px;
+    }
 
     .footer-container {
+        width: 88%;
         grid-template-columns: 1fr;
+        gap: 35px;
     }
 
     .footer-brand {
-        grid-column: auto;
+        max-width: none;
     }
 
     .footer-bottom-container {
+        width: 88%;
+        padding: 20px 0;
         flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
