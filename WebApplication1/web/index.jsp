@@ -522,7 +522,7 @@
 
             <div class="course-card">
 
-                <div class="course-image">
+                <div class="course-image java">
 
                     <div class="course-category">
                         PROGRAMMING

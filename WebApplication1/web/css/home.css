@@ -708,6 +708,17 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* Default course background */
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 28%),
+        linear-gradient(135deg, #1455d9, #4f6ff0);
+}
+
+.course-image.java {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.25), transparent 28%),
+        linear-gradient(135deg, #b21f1f, #e85d04);
 }
 
 .course-image.web {
