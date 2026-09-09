@@ -1,0 +1,154 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 9 Sept 2026, 10:04:52 pm
+    Author     : User
+*/
+/* =====================================================
+   CAPACITY CONNECT - FOOTER
+===================================================== */
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.main-footer {
+    background: #0c1424;
+    color: #ffffff;
+}
+
+.footer-main {
+    padding: 65px 0 45px;
+}
+
+.footer-container {
+    width: min(1180px, 92%);
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.3fr;
+    gap: 35px;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-brand > p {
+    margin-top: 18px;
+    max-width: 320px;
+    color: #9ca8ba;
+    font-size: 13px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #26334a;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #cbd4e2;
+}
+
+.footer-social a:hover {
+    background: #1455d9;
+    border-color: #1455d9;
+    color: #ffffff;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #9ca8ba;
+    font-size: 13px;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #9ca8ba;
+    font-size: 13px;
+}
+
+.contact-item i {
+    color: #4e8aff;
+    margin-top: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #202c40;
+    padding: 20px 0;
+}
+
+.footer-bottom-container {
+    width: min(1180px, 92%);
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+    color: #78869c;
+    font-size: 12px;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 850px) {
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom-container {
+        flex-direction: column;
+    }
+}

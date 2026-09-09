@@ -1,0 +1,381 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 9 Sept 2026, 10:19:34 pm
+    Author     : User
+*/
+/* =====================================================
+   CAPACITY CONNECT - HEADER
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+.main-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(15, 35, 65, 0.08);
+    transition: 0.3s ease;
+}
+
+.main-header.scrolled {
+    box-shadow: 0 10px 40px rgba(8, 26, 51, 0.09);
+}
+
+.header-container {
+    width: min(1240px, calc(100% - 48px));
+    height: 78px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    color: #081a33;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.brand-mark span {
+    width: 9px;
+    border-radius: 5px 5px 2px 2px;
+    display: block;
+}
+
+.brand-mark span:nth-child(1) {
+    height: 21px;
+    background: #2563eb;
+}
+
+.brand-mark span:nth-child(2) {
+    height: 31px;
+    background: #081a33;
+}
+
+.brand-mark span:nth-child(3) {
+    height: 25px;
+    background: #f5b942;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.brand-text strong {
+    font-family: "Manrope", sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.brand-text span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 5px;
+    color: #2563eb;
+    font-weight: 700;
+}
+
+
+/* NAVIGATION */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #516078;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 29px 0;
+    transition: 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #081a33;
+}
+
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 24px;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    background: #2563eb;
+}
+
+
+/* ACTIONS */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-btn {
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: #f4f7fb;
+    border-radius: 50%;
+    color: #30415a;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.search-btn:hover {
+    background: #eaf0fa;
+    transform: translateY(-2px);
+}
+
+.login-link {
+    color: #1f3048;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.header-register {
+    text-decoration: none;
+    background: #081a33;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: 0.3s ease;
+}
+
+.header-register:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.22);
+}
+
+
+/* MOBILE */
+
+.mobile-menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.mobile-menu-btn span {
+    width: 23px;
+    height: 2px;
+    background: #081a33;
+    display: block;
+    margin: 5px auto;
+    transition: 0.3s ease;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+
+/* SEARCH */
+
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 15, 31, 0.82);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.search-overlay.active {
+    display: flex;
+}
+
+.search-box {
+    width: min(700px, 100%);
+    background: white;
+    padding: 48px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+.search-box span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: #2563eb;
+    margin-bottom: 18px;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #dfe5ee;
+    padding: 15px 0;
+    outline: none;
+    font-size: 26px;
+    color: #081a33;
+}
+
+.search-box p {
+    color: #78869a;
+    font-size: 12px;
+}
+
+.close-search {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f6fa;
+    cursor: pointer;
+    color: #081a33;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+
+    .desktop-nav {
+        gap: 18px;
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+
+    .login-link {
+        display: none;
+    }
+
+}
+
+@media (max-width: 850px) {
+
+    .desktop-nav,
+    .header-actions {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .mobile-nav {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 18px 24px 25px;
+        border-bottom: 1px solid #e6ebf2;
+        box-shadow: 0 20px 30px rgba(8, 26, 51, 0.08);
+
+        display: flex;
+        flex-direction: column;
+
+        transform: translateY(-15px);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease;
+    }
+
+    .mobile-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-nav > a {
+        padding: 14px 5px;
+        text-decoration: none;
+        color: #26374f;
+        font-weight: 600;
+        border-bottom: 1px solid #edf1f5;
+    }
+
+    .mobile-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .mobile-actions a {
+        flex: 1;
+        text-align: center;
+        padding: 13px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        background: #081a33;
+        color: white;
+    }
+
+    .mobile-actions a:first-child {
+        background: #f0f4f9;
+        color: #081a33;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .header-container {
+        width: calc(100% - 30px);
+    }
+
+    .search-box {
+        padding: 35px 25px;
+    }
+
+    .search-box input {
+        font-size: 20px;
+    }
+}
