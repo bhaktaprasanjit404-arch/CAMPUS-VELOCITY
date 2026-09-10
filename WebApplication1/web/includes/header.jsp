@@ -78,7 +78,7 @@
 
 
             <!-- LOGIN -->
-            <a href="login.jsp" class="login-btn">
+            <a href="${pageContext.request.contextPath}/login.jsp" class="login-btn">
                 <i class="fas fa-user"></i>
                 Login
             </a>
