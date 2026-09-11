@@ -6,57 +6,32 @@ package com.capacityconnect.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/capacity_connect";
-
-    private static final String USER =
-            "root";
-
-    private static final String PASSWORD =
-            "YOUR_MYSQL_PASSWORD";
-
+    private static Connection con;
 
     public static Connection getConnection() {
 
-        Connection connection = null;
-
         try {
 
-            // Load MySQL JDBC Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            if (con == null || con.isClosed()) {
 
-            // Create database connection
-            connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/foodcentre",
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/capacity_connect",
                         "root",
                         "Prasan@1234"
                 );
 
-            System.out.println(
-                    "Database connected successfully!"
-            );
+                System.out.println("Database Connected");
+            }
 
-        } catch (ClassNotFoundException e) {
-
-            System.out.println(
-                    "MySQL JDBC Driver not found!"
-            );
-
-            e.printStackTrace();
-
-        } catch (SQLException e) {
-
-            System.out.println(
-                    "Database connection failed!"
-            );
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return connection;
+        return con;
     }
 }

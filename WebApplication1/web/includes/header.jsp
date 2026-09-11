@@ -85,7 +85,7 @@
 
 
             <!-- REGISTER -->
-            <a href="register.jsp" class="signup-btn">
+            <a href="${pageContext.request.contextPath}/register.jsp" class="signup-btn">
                 Get Started
                 <i class="fas fa-arrow-right"></i>
             </a>
