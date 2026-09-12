@@ -7,6 +7,11 @@
     Teacher teacher =
         (Teacher) request.getAttribute("teacher");
 
+    if (teacher == null) {
+        response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=progress");
+        return;
+    }
+
     List<String[]> progress =
         (List<String[]>) request.getAttribute("progress");
 %>
@@ -119,7 +124,7 @@
     </div>
 
     <div class="mini-avatar">
-        <%= teacher.getName().substring(0,1).toUpperCase() %>
+        <%= (teacher != null && teacher.getName() != null && !teacher.getName().isEmpty()) ? teacher.getName().substring(0,1).toUpperCase() : "T" %>
     </div>
 
 </header>
@@ -196,11 +201,11 @@
 
                         <div class="progress-bar-small">
 
-                            <span style="width:<%= p[3] %>%"></span>
+                            <span style="width: <%= p[3] + "%" %>;"></span>
 
                         </div>
 
-                        <small><%= p[3] %>%</small>
+                        <small><%= p[3] %>&#37;</small>
 
                     </div>
 

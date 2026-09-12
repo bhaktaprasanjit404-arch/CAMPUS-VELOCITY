@@ -5,6 +5,11 @@
 <%
     Teacher teacher =
         (Teacher) request.getAttribute("teacher");
+
+    if (teacher == null) {
+        response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=profile");
+        return;
+    }
 %>
 
 <!DOCTYPE html>
@@ -124,7 +129,7 @@
 
     <div class="profile-avatar-large">
 
-        <%= teacher.getName().substring(0,1).toUpperCase() %>
+        <%= (teacher != null && teacher.getName() != null && !teacher.getName().isEmpty()) ? teacher.getName().substring(0,1).toUpperCase() : "T" %>
 
     </div>
 

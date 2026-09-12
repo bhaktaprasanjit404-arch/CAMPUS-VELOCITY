@@ -77,15 +77,14 @@ if (enrollments != null && !enrollments.isEmpty()) {
 </td>
 
 <td>
-    <%= e.get("progress") %>%
+    <%= e.get("progress") %>&#37;
 </td>
 
 <td>
-
-<span class="status <%= 
-    "COMPLETED".equals(e.get("status"))
-    ? "completed" : "active"
-%>">
+<%
+    String eStatus = "COMPLETED".equals(e.get("status")) ? "completed" : "active";
+%>
+<span class="status <%= eStatus %>">
 
     <%= e.get("status") %>
 

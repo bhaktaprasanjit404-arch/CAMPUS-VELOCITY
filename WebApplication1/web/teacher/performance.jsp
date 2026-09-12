@@ -7,6 +7,11 @@
     Teacher teacher =
         (Teacher) request.getAttribute("teacher");
 
+    if (teacher == null) {
+        response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=performance");
+        return;
+    }
+
     List<String[]> performance =
         (List<String[]>) request.getAttribute("performance");
 %>
@@ -134,7 +139,7 @@
     </div>
 
     <div class="mini-avatar">
-        <%= teacher.getName().substring(0,1).toUpperCase() %>
+        <%= (teacher != null && teacher.getName() != null && !teacher.getName().isEmpty()) ? teacher.getName().substring(0,1).toUpperCase() : "T" %>
     </div>
 
 </header>
@@ -270,7 +275,7 @@
 
                     <small class="score-percent">
 
-                        <%= String.format("%.1f", percentage) %>%
+                        <%= String.format("%.1f", percentage) %>&#37;
 
                     </small>
 

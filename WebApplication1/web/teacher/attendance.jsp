@@ -7,6 +7,11 @@
     Teacher teacher =
         (Teacher) request.getAttribute("teacher");
 
+    if (teacher == null) {
+        response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=attendance");
+        return;
+    }
+
     List<String[]> courses =
         (List<String[]>) request.getAttribute("courses");
 
@@ -120,7 +125,7 @@
     </div>
 
     <div class="mini-avatar">
-        <%= teacher.getName().substring(0,1).toUpperCase() %>
+        <%= (teacher != null && teacher.getName() != null && !teacher.getName().isEmpty()) ? teacher.getName().substring(0,1).toUpperCase() : "T" %>
     </div>
 
 </header>

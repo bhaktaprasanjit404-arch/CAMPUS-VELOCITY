@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
 
                     response.sendRedirect(
                             request.getContextPath()
-                            + "/student/student-dashboard.jsp"
+                            + "/StudentServlet?action=dashboard"
                     );
 
                 } else {

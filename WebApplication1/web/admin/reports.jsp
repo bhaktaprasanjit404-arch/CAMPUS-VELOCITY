@@ -145,7 +145,7 @@ if (reportCourses != null && !reportCourses.isEmpty()) {
 
 <td>
     <%= r.get("avg_progress") != null
-        ? r.get("avg_progress") : 0 %>%
+        ? r.get("avg_progress") : 0 %>&#37;
 </td>
 
 </tr>

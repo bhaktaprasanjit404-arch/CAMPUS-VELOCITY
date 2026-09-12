@@ -94,11 +94,10 @@
                     </td>
 
                     <td>
-
-                        <span class="status <%= 
-                            "ACTIVE".equals(c.get("status"))
-                            ? "active" : "draft"
-                        %>">
+                        <%
+                            String cStatus = "ACTIVE".equals(c.get("status")) ? "active" : "draft";
+                        %>
+                        <span class="status <%= cStatus %>">
 
                             <%= c.get("status") %>
 
