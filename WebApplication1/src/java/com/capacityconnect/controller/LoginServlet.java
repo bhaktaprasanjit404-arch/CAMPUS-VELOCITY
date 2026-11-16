@@ -5,248 +5,363 @@ import com.capacityconnect.model.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
+
     private UserDAO userDAO;
 
+
+    // =========================================================
+    // INIT
+    // =========================================================
 
     @Override
     public void init() {
 
         userDAO = new UserDAO();
+
     }
 
 
+    // =========================================================
+    // POST
+    // =========================================================
+
     @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response)
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
 
 
-        String role = request.getParameter("role");
+        // Get selected role
+        String role =
+                request.getParameter("role");
 
 
-        // =================================================
-        // STUDENT LOGIN
-        // =================================================
+        // =====================================================
+        // NO ROLE SELECTED
+        // =====================================================
 
-        if ("STUDENT".equalsIgnoreCase(role)) {
+        if (role == null || role.trim().isEmpty()) {
 
-            try {
-
-                int studentId =
-                        Integer.parseInt(
-                                request.getParameter("studentId")
-                        );
-
-                String studentName =
-                        request.getParameter("studentName");
-
-                String password =
-                        request.getParameter("studentPassword");
+            request.setAttribute(
+                    "error",
+                    "Please select an account type."
+            );
 
 
-                User user =
-                        userDAO.loginStudent(
-                                studentId,
-                                studentName,
-                                password
-                        );
+            request.getRequestDispatcher(
+                    "login.jsp"
+            ).forward(request, response);
 
-
-                if (user != null) {
-
-                    HttpSession session =
-                            request.getSession();
-
-                    session.setAttribute(
-                            "userId",
-                            user.getId()
-                    );
-
-                    session.setAttribute(
-                            "userName",
-                            user.getName()
-                    );
-
-                    session.setAttribute(
-                            "email",
-                            user.getEmail()
-                    );
-
-                    session.setAttribute(
-                            "role",
-                            "STUDENT"
-                    );
-
-
-                    response.sendRedirect(
-                            request.getContextPath()
-                            + "/StudentServlet?action=dashboard"
-                    );
-
-                } else {
-
-                    request.setAttribute(
-                            "error",
-                            "Invalid Student ID, name or password."
-                    );
-
-                    request.getRequestDispatcher(
-                            "login.jsp"
-                    ).forward(request, response);
-                }
-
-
-            } catch (NumberFormatException e) {
-
-                request.setAttribute(
-                        "error",
-                        "Please enter a valid Student ID."
-                );
-
-                request.getRequestDispatcher(
-                        "login.jsp"
-                ).forward(request, response);
-            }
 
             return;
         }
 
 
-        // =================================================
-// TEACHER LOGIN
-// =================================================
+        // =====================================================
+        // USER / STUDENT LOGIN
+        // =====================================================
 
-if ("TEACHER".equalsIgnoreCase(role)) {
+        if (role.equals("USER")) {
 
-    try {
 
-        int teacherId =
-                Integer.parseInt(
-                        request.getParameter("teacherId")
+            String name =
+                    request.getParameter(
+                            "userName"
+                    );
+
+
+            String email =
+                    request.getParameter(
+                            "userEmail"
+                    );
+
+
+            // Basic validation
+            if (name == null ||
+                    name.trim().isEmpty() ||
+                    email == null ||
+                    email.trim().isEmpty()) {
+
+
+                request.setAttribute(
+                        "error",
+                        "Please enter your name and email."
                 );
 
-        int userId =
-                Integer.parseInt(
-                        request.getParameter("userId")
+
+                request.getRequestDispatcher(
+                        "login.jsp"
+                ).forward(request, response);
+
+
+                return;
+            }
+
+
+            // Login from database
+            User user =
+                    userDAO.loginUser(
+                            name.trim(),
+                            email.trim()
+                    );
+
+
+            // =================================================
+            // LOGIN SUCCESS
+            // =================================================
+
+            if (user != null) {
+
+
+                HttpSession session =
+                        request.getSession();
+
+
+                session.setAttribute(
+                        "userId",
+                        user.getId()
                 );
 
-        String password =
-                request.getParameter("teacherPassword");
 
-
-        User user =
-                userDAO.loginTeacher(
-                        teacherId,
-                        userId,
-                        password
+                session.setAttribute(
+                        "userName",
+                        user.getName()
                 );
 
 
-        if (user != null) {
-
-            HttpSession session =
-                    request.getSession();
-
-            session.setAttribute(
-                    "userId",
-                    user.getId()
-            );
-
-            session.setAttribute(
-                    "userName",
-                    user.getName()
-            );
-
-            session.setAttribute(
-                    "email",
-                    user.getEmail()
-            );
-
-            session.setAttribute(
-                    "role",
-                    "TEACHER"
-            );
-
-            session.setAttribute(
-                    "teacherId",
-                    teacherId
-            );
+                session.setAttribute(
+                        "email",
+                        user.getEmail()
+                );
 
 
-            // IMPORTANT:
-            // Do NOT open dashboard.jsp directly.
-            // TeacherServlet must load the Teacher object.
-
-            response.sendRedirect(
-                    request.getContextPath()
-                    + "/TeacherServlet?action=dashboard"
-            );
+                session.setAttribute(
+                        "role",
+                        "STUDENT"
+                );
 
 
-        } else {
+                // Student dashboard
+                response.sendRedirect(
+                        "user/dashboard.jsp"
+                );
+
+
+                return;
+            }
+
+
+            // =================================================
+            // LOGIN FAILED
+            // =================================================
 
             request.setAttribute(
                     "error",
-                    "Invalid Teacher ID, User ID or password."
+                    "Invalid user name or email."
             );
+
 
             request.getRequestDispatcher(
                     "login.jsp"
             ).forward(request, response);
+
+
+            return;
         }
 
 
-    } catch (NumberFormatException e) {
+        // =====================================================
+        // TEACHER LOGIN
+        // =====================================================
 
-        request.setAttribute(
-                "error",
-                "Teacher ID and User ID must be numbers."
-        );
+        if (role.equals("TEACHER")) {
 
-        request.getRequestDispatcher(
-                "login.jsp"
-        ).forward(request, response);
-    }
 
-    return;
-}
+            String name =
+                    request.getParameter(
+                            "teacherName"
+                    );
 
-        // =================================================
+
+            String phone =
+                    request.getParameter(
+                            "teacherPhone"
+                    );
+
+
+            // Basic validation
+            if (name == null ||
+                    name.trim().isEmpty() ||
+                    phone == null ||
+                    phone.trim().isEmpty()) {
+
+
+                request.setAttribute(
+                        "error",
+                        "Please enter teacher name and phone number."
+                );
+
+
+                request.getRequestDispatcher(
+                        "login.jsp"
+                ).forward(request, response);
+
+
+                return;
+            }
+
+
+            // Login from database
+            User teacher =
+                    userDAO.loginTeacher(
+                            name.trim(),
+                            phone.trim()
+                    );
+
+
+            // =================================================
+            // TEACHER LOGIN SUCCESS
+            // =================================================
+
+            if (teacher != null) {
+
+
+                HttpSession session =
+                        request.getSession();
+
+
+                session.setAttribute(
+                        "userId",
+                        teacher.getId()
+                );
+
+
+                session.setAttribute(
+                        "userName",
+                        teacher.getName()
+                );
+
+
+                session.setAttribute(
+                        "email",
+                        teacher.getEmail()
+                );
+
+
+                session.setAttribute(
+                        "role",
+                        "TEACHER"
+                );
+
+
+                // Important:
+                // TeacherServlet loads the teacher object
+                // and then opens teacher dashboard.
+
+                response.sendRedirect(
+                        "TeacherServlet?action=dashboard"
+                );
+
+
+                return;
+            }
+
+
+            // =================================================
+            // TEACHER LOGIN FAILED
+            // =================================================
+
+            request.setAttribute(
+                    "error",
+                    "Invalid teacher name or phone number."
+            );
+
+
+            request.getRequestDispatcher(
+                    "login.jsp"
+            ).forward(request, response);
+
+
+            return;
+        }
+
+
+        // =====================================================
         // ADMIN LOGIN
-        // =================================================
+        // =====================================================
 
-        if ("ADMIN".equalsIgnoreCase(role)) {
+        if (role.equals("ADMIN")) {
+
 
             String username =
-                    request.getParameter("adminUsername");
+                    request.getParameter(
+                            "adminUsername"
+                    );
+
 
             String password =
-                    request.getParameter("adminPassword");
+                    request.getParameter(
+                            "adminPassword"
+                    );
 
 
-            boolean success =
+            // Basic validation
+            if (username == null ||
+                    username.trim().isEmpty() ||
+                    password == null ||
+                    password.trim().isEmpty()) {
+
+
+                request.setAttribute(
+                        "error",
+                        "Please enter administrator username and password."
+                );
+
+
+                request.getRequestDispatcher(
+                        "login.jsp"
+                ).forward(request, response);
+
+
+                return;
+            }
+
+
+            // Check admin table
+            boolean valid =
                     userDAO.loginAdmin(
-                            username,
+                            username.trim(),
                             password
                     );
 
 
-            if (success) {
+            // =================================================
+            // ADMIN LOGIN SUCCESS
+            // =================================================
+
+            if (valid) {
+
 
                 HttpSession session =
                         request.getSession();
+
 
                 session.setAttribute(
                         "adminUsername",
                         username
                 );
+
 
                 session.setAttribute(
                         "role",
@@ -255,35 +370,42 @@ if ("TEACHER".equalsIgnoreCase(role)) {
 
 
                 response.sendRedirect(
-                        request.getContextPath()
-                        + "/admin/dashboard.jsp"
+                        "admin/dashboard.jsp"
                 );
 
 
-            } else {
-
-                request.setAttribute(
-                        "error",
-                        "Invalid admin username or password."
-                );
-
-                request.getRequestDispatcher(
-                        "login.jsp"
-                ).forward(request, response);
+                return;
             }
+
+
+            // =================================================
+            // ADMIN LOGIN FAILED
+            // =================================================
+
+            request.setAttribute(
+                    "error",
+                    "Invalid administrator credentials."
+            );
+
+
+            request.getRequestDispatcher(
+                    "login.jsp"
+            ).forward(request, response);
+
 
             return;
         }
 
 
-        // =================================================
+        // =====================================================
         // INVALID ROLE
-        // =================================================
+        // =====================================================
 
         request.setAttribute(
                 "error",
-                "Please select an account type."
+                "Invalid account type selected."
         );
+
 
         request.getRequestDispatcher(
                 "login.jsp"

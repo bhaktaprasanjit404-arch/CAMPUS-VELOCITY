@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.capacityconnect.model;
 
 public class User {
@@ -12,11 +8,19 @@ public class User {
     private String password;
     private String role;
 
-    // Default constructor
+
+    // ==========================================
+    // DEFAULT CONSTRUCTOR
+    // ==========================================
+
     public User() {
     }
 
-    // Parameterized constructor
+
+    // ==========================================
+    // FULL CONSTRUCTOR
+    // ==========================================
+
     public User(int id, String name, String email,
                 String password, String role) {
 
@@ -27,49 +31,91 @@ public class User {
         this.role = role;
     }
 
-    // ==============================
-    // GETTERS
-    // ==============================
+
+    // ==========================================
+    // GET ID
+    // ==========================================
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    // ==============================
-    // SETTERS
-    // ==============================
+    // ==========================================
+    // SET ID
+    // ==========================================
 
     public void setId(int id) {
         this.id = id;
     }
 
+
+    // ==========================================
+    // GET NAME
+    // ==========================================
+
+    public String getName() {
+        return name;
+    }
+
+
+    // ==========================================
+    // SET NAME
+    // ==========================================
+
     public void setName(String name) {
         this.name = name;
     }
+
+
+    // ==========================================
+    // GET EMAIL
+    // ==========================================
+
+    public String getEmail() {
+        return email;
+    }
+
+
+    // ==========================================
+    // SET EMAIL
+    // ==========================================
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+
+    // ==========================================
+    // GET PASSWORD
+    // ==========================================
+
+    public String getPassword() {
+        return password;
+    }
+
+
+    // ==========================================
+    // SET PASSWORD
+    // ==========================================
+
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    // ==========================================
+    // GET ROLE
+    // ==========================================
+
+    public String getRole() {
+        return role;
+    }
+
+
+    // ==========================================
+    // SET ROLE
+    // ==========================================
 
     public void setRole(String role) {
         this.role = role;

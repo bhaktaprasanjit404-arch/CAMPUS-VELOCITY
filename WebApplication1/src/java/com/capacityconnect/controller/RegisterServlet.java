@@ -1,11 +1,12 @@
 package com.capacityconnect.controller;
 
 import com.capacityconnect.dao.UserDAO;
-import com.capacityconnect.model.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
@@ -28,8 +29,12 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
+        request.setCharacterEncoding("UTF-8");
+
+
         String role =
                 request.getParameter("role");
+
 
         String name =
                 request.getParameter("name");
@@ -41,118 +46,198 @@ public class RegisterServlet extends HttpServlet {
                 request.getParameter("password");
 
 
-        // =================================================
-        // STUDENT REGISTRATION
-        // =================================================
+        /* =====================================================
+           BASIC VALIDATION
+        ===================================================== */
 
-        if ("STUDENT".equalsIgnoreCase(role)) {
+        if (role == null ||
+            name == null ||
+            email == null ||
+            password == null ||
+            name.trim().isEmpty() ||
+            email.trim().isEmpty() ||
+            password.trim().isEmpty()) {
 
-            User user = new User();
+            request.setAttribute(
+                    "error",
+                    "Please fill all required fields."
+            );
 
-            user.setName(name.trim());
-            user.setEmail(email.trim());
-            user.setPassword(password);
-            user.setRole("STUDENT");
-
-
-            boolean success =
-                    userDAO.registerStudent(user);
-
-
-            if (success) {
-
-                response.sendRedirect(
-                        request.getContextPath()
-                        + "/login.jsp?registered=true"
-                );
-
-            } else {
-
-                request.setAttribute(
-                        "error",
-                        "Student registration failed. Email may already exist."
-                );
-
-                request.getRequestDispatcher(
-                        "register.jsp"
-                ).forward(request, response);
-            }
+            request.getRequestDispatcher(
+                    "register.jsp"
+            ).forward(request, response);
 
             return;
         }
 
 
-        // =================================================
-        // TEACHER REGISTRATION
-        // =================================================
-
-        if ("TEACHER".equalsIgnoreCase(role)) {
-
-            String qualification =
-                    request.getParameter("qualification");
-
-            String specialization =
-                    request.getParameter("specialization");
-
-            String phone =
-                    request.getParameter("phone");
-
-            String bio =
-                    request.getParameter("bio");
+        try {
 
 
-            User user = new User();
+            /* =================================================
+               STUDENT / USER REGISTRATION
+            ================================================= */
 
-            user.setName(name.trim());
-            user.setEmail(email.trim());
-            user.setPassword(password);
-            user.setRole("TEACHER");
+            if ("STUDENT".equalsIgnoreCase(role)) {
 
 
-            boolean success =
-                    userDAO.registerTeacher(
-                            user,
-                            qualification,
-                            specialization,
-                            phone,
-                            bio
+                boolean success =
+                        userDAO.registerStudent(
+                                name.trim(),
+                                email.trim(),
+                                password
+                        );
+
+
+                if (success) {
+
+                    response.sendRedirect(
+                            "login.jsp?registered=student"
+                    );
+
+                } else {
+
+                    request.setAttribute(
+                            "error",
+                            "Registration failed. Email may already exist."
+                    );
+
+                    request.getRequestDispatcher(
+                            "register.jsp"
+                    ).forward(request, response);
+                }
+
+
+                return;
+            }
+
+
+            /* =================================================
+               TEACHER REGISTRATION
+            ================================================= */
+
+            if ("TEACHER".equalsIgnoreCase(role)) {
+
+
+                String qualification =
+                        request.getParameter(
+                                "qualification"
+                        );
+
+
+                String specialization =
+                        request.getParameter(
+                                "specialization"
+                        );
+
+
+                String phone =
+                        request.getParameter(
+                                "phone"
+                        );
+
+
+                String bio =
+                        request.getParameter(
+                                "bio"
+                        );
+
+
+                if (qualification == null ||
+                    specialization == null ||
+                    phone == null ||
+                    qualification.trim().isEmpty() ||
+                    specialization.trim().isEmpty() ||
+                    phone.trim().isEmpty()) {
+
+
+                    request.setAttribute(
+                            "error",
+                            "Please fill all teacher details."
                     );
 
 
-            if (success) {
+                    request.getRequestDispatcher(
+                            "register.jsp"
+                    ).forward(request, response);
 
-                response.sendRedirect(
-                        request.getContextPath()
-                        + "/login.jsp?registered=true"
-                );
+                    return;
+                }
 
-            } else {
 
-                request.setAttribute(
-                        "error",
-                        "Teacher registration failed. Email may already exist."
-                );
+                boolean success =
+                        userDAO.registerTeacher(
+                                name.trim(),
+                                email.trim(),
+                                password,
+                                qualification.trim(),
+                                specialization.trim(),
+                                phone.trim(),
+                                bio
+                        );
 
-                request.getRequestDispatcher(
-                        "register.jsp"
-                ).forward(request, response);
+
+                if (success) {
+
+                    response.sendRedirect(
+                            "login.jsp?registered=teacher"
+                    );
+
+                } else {
+
+                    request.setAttribute(
+                            "error",
+                            "Teacher registration failed. Email may already exist."
+                    );
+
+                    request.getRequestDispatcher(
+                            "register.jsp"
+                    ).forward(request, response);
+                }
+
+
+                return;
             }
 
-            return;
+
+            /* =================================================
+               INVALID ROLE
+            ================================================= */
+
+            request.setAttribute(
+                    "error",
+                    "Invalid registration type."
+            );
+
+            request.getRequestDispatcher(
+                    "register.jsp"
+            ).forward(request, response);
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+
+            request.setAttribute(
+                    "error",
+                    "Something went wrong: "
+                    + e.getMessage()
+            );
+
+
+            request.getRequestDispatcher(
+                    "register.jsp"
+            ).forward(request, response);
         }
+    }
 
 
-        // =================================================
-        // INVALID ROLE
-        // =================================================
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws IOException {
 
-        request.setAttribute(
-                "error",
-                "Invalid account type."
-        );
-
-        request.getRequestDispatcher(
-                "register.jsp"
-        ).forward(request, response);
+        response.sendRedirect("register.jsp");
     }
 }

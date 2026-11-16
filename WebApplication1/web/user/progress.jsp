@@ -82,6 +82,7 @@
     <!-- User Standard CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
 
+
     <style>
         .progress-section-title {
             font-size: 18px;

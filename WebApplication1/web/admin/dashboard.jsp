@@ -7,7 +7,9 @@
 <%
     request.setAttribute("pageTitle", "Dashboard");
 %>
-
+<html>
+    <head><title>Admin dashboard</title></head>
+    <body>
 <%@ include file="admin-header.jsp" %>
 
 <div class="page-header">
@@ -255,3 +257,5 @@
 
 
 <%@ include file="admin-footer.jsp" %>
+    </body>
+</html>

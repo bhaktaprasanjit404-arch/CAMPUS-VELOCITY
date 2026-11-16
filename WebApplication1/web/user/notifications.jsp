@@ -72,6 +72,7 @@
     <!-- User Standard CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
 
+
     <style>
         .notif-feed-card {
             background: #ffffff;

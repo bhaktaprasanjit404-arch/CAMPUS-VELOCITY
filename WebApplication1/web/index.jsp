@@ -1,763 +1,1254 @@
-<%-- 
-    Document   : index
-    Created on : 9 Sept 2026, 5:01:25 pm
-    Author     : User
---%>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Capacity Connect | Digital Learning Portal</title>
 
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- GOOGLE FONT -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-
-    <!-- FONT AWESOME -->
-
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
-    <!-- MAIN CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
 
-
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
-<%@ include file="includes/header.jsp" %>
+    <!-- HEADER -->
+    <jsp:include page="includes/header.jsp"/>
 
 
-<!-- ================= HERO SECTION ================= -->
+    <!-- ================= HERO SECTION ================= -->
 
-<section class="hero-section">
+    <section class="hero-section">
 
-    <div class="hero-background">
+        <div class="hero-container">
 
-        <div class="hero-grid"></div>
+            <!-- Slide 1 -->
+            <div class="hero-slide active"
+                 style="background-image: url('images/hero-student.jpg');">
 
-        <div class="hero-glow hero-glow-one"></div>
+                <div class="hero-content">
 
-        <div class="hero-glow hero-glow-two"></div>
-
-    </div>
-
-
-    <div class="hero-container">
-
-
-        <!-- HERO CONTENT -->
-
-        <div class="hero-content">
-
-            <div class="hero-badge">
-
-                <span class="badge-dot"></span>
-
-                DIGITAL CAPACITY BUILDING PLATFORM
-
-            </div>
-
-
-            <h1 class="hero-title">
-
-                Learn.
-                <span>Develop.</span>
-                Grow.
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                A modern digital capacity building and learning
-                management portal designed to connect learners,
-                teachers and administrators in one powerful
-                learning ecosystem.
-
-            </p>
-
-
-            <!-- HERO BUTTONS -->
-
-            <div class="hero-buttons">
-
-                <a href="courses.jsp"
-                   class="btn btn-primary">
-
-                    Explore Courses
-
-                    <i class="fas fa-arrow-right"></i>
-
-                </a>
-
-
-                <button class="btn btn-secondary"
-                        onclick="openVideo()">
-
-                    <span class="play-icon">
-
-                        <i class="fas fa-play"></i>
-
+                    <span class="hero-tag">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        LEARN • GROW • SUCCEED
                     </span>
 
-                    Watch Introduction
+                    <h1 class="hero-title">
+                        Build Your Skills.
+                        <br>
+                        Build Your Future.
+                    </h1>
 
-                </button>
+                    <p>
+                        Learn from expert teachers and explore
+                        practical courses designed for your career.
+                    </p>
 
-            </div>
+                    <div class="hero-buttons">
 
+                        <a href="courses.jsp" class="primary-btn">
+                            Explore Courses
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
 
-            <!-- HERO TRUST -->
+                        <a href="about.jsp" class="secondary-btn">
+                            Learn More
+                        </a>
 
-            <div class="hero-trust">
-
-                <div class="trust-users">
-
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
                     </div>
 
                 </div>
 
+            </div>
 
-                <div class="trust-text">
 
-                    <strong>Growing Learning Community</strong>
+            <!-- Slide 2 -->
+            <div class="hero-slide"
+                 style="background-image: url('images/banner-python.jpg');">
 
-                    <span>
-                        Students • Instructors • Professionals
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        <i class="fa-brands fa-python"></i>
+                        PYTHON PROGRAMMING
                     </span>
 
+                    <h1 class="hero-title">
+                        Master Python.
+                        <br>
+                        Create Amazing Things.
+                    </h1>
+
+                    <p>
+                        Start your programming journey with
+                        practical Python learning.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="courses.jsp" class="primary-btn">
+                            Start Learning
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
                 </div>
+
+            </div>
+
+
+            <!-- Slide 3 -->
+            <div class="hero-slide"
+                 style="background-image: url('images/banner-java.jpg');">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        <i class="fa-brands fa-java"></i>
+                        ADVANCED JAVA
+                    </span>
+
+                    <h1 class="hero-title">
+                        Become a
+                        <br>
+                        Java Developer.
+                    </h1>
+
+                    <p>
+                        Learn Java, JSP, Servlets and database
+                        development through practical projects.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="courses.jsp" class="primary-btn">
+                            Explore Java
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Slide 4 -->
+            <div class="hero-slide"
+                 style="background-image: url('images/banner-agriculture.jpg');">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        <i class="fa-solid fa-seedling"></i>
+                        SMART AGRICULTURE
+                    </span>
+
+                    <h1 class="hero-title">
+                        Technology Meets
+                        <br>
+                        Agriculture.
+                    </h1>
+
+                    <p>
+                        Discover modern technologies transforming
+                        farming and agriculture.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="courses.jsp" class="primary-btn">
+                            Discover More
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Slide 5 -->
+            <div class="hero-slide"
+                 style="background-image: url('images/banner-ai.jpg');">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        <i class="fa-solid fa-brain"></i>
+                        ARTIFICIAL INTELLIGENCE
+                    </span>
+
+                    <h1 class="hero-title">
+                        Explore the World
+                        <br>
+                        of AI.
+                    </h1>
+
+                    <p>
+                        Understand Artificial Intelligence and
+                        build the skills of tomorrow.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="courses.jsp" class="primary-btn">
+                            Explore AI
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Slide 6 -->
+            <div class="hero-slide"
+                 style="background-image: url('images/banner-career.jpg');">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        <i class="fa-solid fa-briefcase"></i>
+                        CAREER DEVELOPMENT
+                    </span>
+
+                    <h1 class="hero-title">
+                        Learn Today.
+                        <br>
+                        Lead Tomorrow.
+                    </h1>
+
+                    <p>
+                        Develop the technical and professional
+                        skills needed for your career.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="courses.jsp" class="primary-btn">
+                            Build Your Career
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO ARROWS -->
+
+            <button class="hero-arrow hero-prev" id="heroPrev">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <button class="hero-arrow hero-next" id="heroNext">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+
+            <!-- HERO DOTS -->
+
+            <div class="hero-dots">
+
+                <span class="hero-dot active" data-slide="0"></span>
+                <span class="hero-dot" data-slide="1"></span>
+                <span class="hero-dot" data-slide="2"></span>
+                <span class="hero-dot" data-slide="3"></span>
+                <span class="hero-dot" data-slide="4"></span>
+                <span class="hero-dot" data-slide="5"></span>
 
             </div>
 
         </div>
 
+    </section>
 
-        <!-- HERO IMAGE -->
 
-        <div class="hero-visual">
 
-            <div class="hero-image-wrapper">
+    <!-- ================= STATS SECTION ================= -->
 
-                <img
-                    src="images/hero-student.jpg"
-                    alt="Student learning on Capacity Connect"
-                    class="hero-image"
-                >
+    <section class="stats-section">
+
+        <div class="stats-container">
+
+            <div class="stat-box">
+                <i class="fa-solid fa-book-open"></i>
+                <h2>50+</h2>
+                <p>Learning Programs</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-users"></i>
+                <h2>5K+</h2>
+                <p>Active Learners</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-user-tie"></i>
+                <h2>100+</h2>
+                <p>Expert Teachers</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-layer-group"></i>
+                <h2>25+</h2>
+                <p>Skill Categories</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= VIDEO SECTION ================= -->
+
+    <section class="video-section" id="learning-video">
+
+        <div class="section-heading">
+
+            <span>LEARNING EXPERIENCE</span>
+
+            <h2>
+                Learn. Practice.
+                <strong>Grow.</strong>
+            </h2>
+
+            <p>
+                Experience practical and engaging learning
+                designed to help you build real-world skills.
+            </p>
+
+        </div>
+
+
+        <div class="video-container">
+
+            <div class="main-video">
+
+                <video controls poster="images/video-poster.jpg">
+
+                    <source src="videos/learning.mp4"
+                            type="video/mp4">
+
+                    Your browser does not support the video tag.
+
+                </video>
 
             </div>
 
 
-            <!-- FLOATING CARD 1 -->
+            <div class="video-info">
 
-            <div class="floating-card floating-card-one">
+                <span class="video-label">
+                    <i class="fa-solid fa-play"></i>
+                    WATCH & LEARN
+                </span>
 
-                <div class="floating-icon blue">
+                <h2>
+                    Your Learning Journey
+                    Starts Here
+                </h2>
 
-                    <i class="fas fa-book-open"></i>
+                <p>
+                    Learn from structured courses, practical
+                    examples and experienced teachers.
+                </p>
+
+
+                <div class="video-features">
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Practical Learning
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Expert Guidance
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Career Focused
+                    </div>
 
                 </div>
 
-                <div>
 
-                    <strong>Active Learning</strong>
+                <a href="courses.jsp" class="primary-btn">
+                    Explore Programs
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
 
-                    <span>Continue your journey</span>
+            </div>
 
-                    <div class="progress-bar">
+        </div>
 
-                        <div class="progress-fill"
-                             style="width:72%;">
+    </section>
+
+
+
+    <!-- ================= LEARNING CLASSES ================= -->
+
+    <section class="classes-section">
+
+        <div class="section-heading">
+
+            <span>POPULAR LEARNING CLASSES</span>
+
+            <h2>
+                Explore Your
+                <strong>Interests</strong>
+            </h2>
+
+            <p>
+                Choose a subject and start developing
+                valuable skills.
+            </p>
+
+        </div>
+
+
+        <div class="classes-grid">
+
+
+            <!-- Advanced Java -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-brands fa-java"></i>
+                </div>
+
+                <h3>Advanced Java</h3>
+
+                <p>
+                    JSP, Servlets, JDBC and enterprise
+                    application development.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Python -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+
+                <h3>Python Programming</h3>
+
+                <p>
+                    Learn Python programming from basics
+                    to advanced concepts.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Web Development -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Build modern websites using HTML,
+                    CSS and JavaScript.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- AI -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <h3>Artificial Intelligence</h3>
+
+                <p>
+                    Understand AI concepts and
+                    intelligent technologies.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Cyber Security -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <h3>Cyber Security</h3>
+
+                <p>
+                    Learn security fundamentals,
+                    networking and protection.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Agriculture -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+
+                <h3>Smart Agriculture</h3>
+
+                <p>
+                    Explore technology-driven
+                    modern agriculture.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Data Science -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <h3>Data Science</h3>
+
+                <p>
+                    Learn data analysis, visualization
+                    and data-driven decision making.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Cloud -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+
+                <h3>Cloud Computing</h3>
+
+                <p>
+                    Understand cloud technologies
+                    and modern infrastructure.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Database -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <h3>Database Management</h3>
+
+                <p>
+                    Learn SQL, MySQL and database
+                    management concepts.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- Career -->
+
+            <div class="class-card">
+
+                <div class="class-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <h3>Career Development</h3>
+
+                <p>
+                    Improve your professional skills
+                    and prepare for your career.
+                </p>
+
+                <a href="course-details.jsp">
+                    Explore Class
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROGRAMS SECTION ================= -->
+
+    <section class="programs-section">
+
+        <div class="section-heading">
+
+            <span>FEATURED PROGRAMS</span>
+
+            <h2>
+                Explore Our
+                <strong>Learning Programs</strong>
+            </h2>
+
+            <p>
+                Discover practical courses created to
+                develop your technical and professional skills.
+            </p>
+
+        </div>
+
+
+        <div class="program-carousel-wrapper">
+
+            <button class="program-arrow program-prev"
+                    id="programPrev">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+
+            <div class="program-carousel"
+                 id="programCarousel">
+
+
+                <!-- 1 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-java.jpg"
+                             alt="Advanced Java">
+
+                        <span>TECHNOLOGY</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Advanced Java Development</h3>
+
+                        <p>
+                            JSP, Servlets, JDBC and enterprise
+                            application development.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 2 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-python.jpg"
+                             alt="Python Programming">
+
+                        <span>PROGRAMMING</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Python Programming</h3>
+
+                        <p>
+                            Build strong Python programming
+                            skills through practical learning.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 3 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-web.jpg"
+                             alt="Web Development">
+
+                        <span>DEVELOPMENT</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Modern Web Development</h3>
+
+                        <p>
+                            Create responsive and modern
+                            websites using web technologies.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-ai.jpg"
+                             alt="Artificial Intelligence">
+
+                        <span>AI</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Artificial Intelligence</h3>
+
+                        <p>
+                            Explore machine intelligence,
+                            AI concepts and applications.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 5 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-cyber.jpg"
+                             alt="Cyber Security">
+
+                        <span>SECURITY</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Cyber Security Fundamentals</h3>
+
+                        <p>
+                            Learn security fundamentals,
+                            threats and protection techniques.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 6 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-data.jpg"
+                             alt="Data Science">
+
+                        <span>DATA</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Data Science Essentials</h3>
+
+                        <p>
+                            Learn data analysis and
+                            visualization techniques.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 7 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-agriculture.jpg"
+                             alt="Smart Agriculture">
+
+                        <span>AGRICULTURE</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Smart Agriculture</h3>
+
+                        <p>
+                            Discover technology-powered
+                            modern agriculture.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 8 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-cloud.jpg"
+                             alt="Cloud Computing">
+
+                        <span>CLOUD</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Cloud Computing</h3>
+
+                        <p>
+                            Understand cloud platforms,
+                            infrastructure and services.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 9 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-database.jpg"
+                             alt="Database Management">
+
+                        <span>DATABASE</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>MySQL Database</h3>
+
+                        <p>
+                            Learn SQL queries, database design
+                            and MySQL.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 10 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-career.jpg"
+                             alt="Career Development">
+
+                        <span>CAREER</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Career Development</h3>
+
+                        <p>
+                            Develop communication,
+                            interview and career skills.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 11 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-django.jpg"
+                             alt="Django Development">
+
+                        <span>PYTHON</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Django Web Development</h3>
+
+                        <p>
+                            Build dynamic web applications
+                            using Python and Django.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 12 -->
+
+                <div class="program-card">
+
+                    <div class="program-image">
+
+                        <img src="images/course-networking.jpg"
+                             alt="Computer Networking">
+
+                        <span>NETWORKING</span>
+
+                    </div>
+
+                    <div class="program-content">
+
+                        <h3>Computer Networking</h3>
+
+                        <p>
+                            Learn networking fundamentals,
+                            protocols and architectures.
+                        </p>
+
+                        <a href="course-details.jsp">
+                            View Course
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button class="program-arrow program-next"
+                    id="programNext">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= WHY CAPACITY CONNECT ================= -->
+
+    <section class="why-section">
+
+        <div class="why-container">
+
+            <div class="why-image">
+
+                <img src="images/learning-team.jpg"
+                     alt="Learning Team">
+
+                <div class="floating-card">
+
+                    <i class="fa-solid fa-award"></i>
+
+                    <div>
+
+                        <strong>Learn With Confidence</strong>
+
+                        <span>
+                            Practical & Career Focused
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-content">
+
+                <span>WHY CAPACITY CONNECT?</span>
+
+                <h2>
+                    Learning Designed
+                    <strong>For Your Future</strong>
+                </h2>
+
+                <p>
+                    Capacity Connect brings learners,
+                    teachers and practical learning together
+                    in one digital platform.
+                </p>
+
+
+                <div class="why-points">
+
+                    <div>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <div>
+
+                            <h3>Expert Teachers</h3>
+
+                            <p>
+                                Learn from experienced
+                                teachers and professionals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <div>
+
+                            <h3>Practical Learning</h3>
+
+                            <p>
+                                Develop skills through
+                                projects and real examples.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <div>
+
+                            <h3>Career Focused</h3>
+
+                            <p>
+                                Build knowledge that can
+                                support your career goals.
+                            </p>
+
                         </div>
 
                     </div>
 
                 </div>
 
-                <b>72%</b>
-
-            </div>
-
-
-            <!-- FLOATING CARD 2 -->
-
-            <div class="floating-card floating-card-two">
-
-                <div class="floating-icon yellow">
-
-                    <i class="fas fa-certificate"></i>
-
-                </div>
-
-                <div>
-
-                    <strong>Certificate Ready</strong>
-
-                    <span>Java Development</span>
-
-                </div>
-
-                <i class="fas fa-check-circle check-icon"></i>
-
-            </div>
-
-
-            <!-- FLOATING CARD 3 -->
-
-            <div class="floating-card floating-card-three">
-
-                <div class="floating-icon purple">
-
-                    <i class="fas fa-chart-line"></i>
-
-                </div>
-
-                <div>
-
-                    <span>Learning Growth</span>
-
-                    <strong>+28.4%</strong>
-
-                </div>
-
             </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- ================= STATS ================= -->
+    <!-- ================= CTA SECTION ================= -->
 
-<section class="stats-section">
+    <section class="cta-section">
 
-    <div class="stats-container">
-
-
-        <div class="stat-item">
-
-            <div class="stat-icon">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
+        <div class="cta-container">
 
             <div>
 
-                <h3>500+</h3>
-
-                <p>Learning Resources</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-item">
-
-            <div class="stat-icon">
-                <i class="fas fa-users"></i>
-            </div>
-
-            <div>
-
-                <h3>1,200+</h3>
-
-                <p>Active Learners</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-item">
-
-            <div class="stat-icon">
-                <i class="fas fa-chalkboard-teacher"></i>
-            </div>
-
-            <div>
-
-                <h3>80+</h3>
-
-                <p>Expert Teachers</p>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-item">
-
-            <div class="stat-icon">
-                <i class="fas fa-certificate"></i>
-            </div>
-
-            <div>
-
-                <h3>250+</h3>
-
-                <p>Certificates Issued</p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= FEATURES ================= -->
-
-<section class="features-section">
-
-    <div class="section-container">
-
-
-        <div class="section-heading">
-
-            <span class="section-label">
-                WHY CAPACITY CONNECT
-            </span>
-
-            <h2>
-                Everything You Need To
-                <span>Grow Your Skills</span>
-            </h2>
-
-            <p>
-                One platform connecting learners, teachers and
-                administrators for a smarter learning experience.
-            </p>
-
-        </div>
-
-
-        <div class="features-grid">
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon blue">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-
-                <h3>Digital Learning</h3>
-
-                <p>
-                    Access structured courses, videos,
-                    learning materials and assessments
-                    from anywhere.
-                </p>
-
-                <a href="courses.jsp">
-                    Explore Learning
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon purple">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-
-                <h3>Teacher Connect</h3>
-
-                <p>
-                    Teachers can manage classes, students,
-                    learning materials and monitor student
-                    performance.
-                </p>
-
-                <a href="login.jsp">
-                    Teacher Portal
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon yellow">
-                    <i class="fas fa-chart-pie"></i>
-                </div>
-
-                <h3>Smart Progress</h3>
-
-                <p>
-                    Track learning progress, course completion,
-                    assessments and overall skill development.
-                </p>
-
-                <a href="login.jsp">
-                    Track Progress
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-
-            <div class="feature-card">
-
-                <div class="feature-icon green">
-                    <i class="fas fa-users"></i>
-                </div>
-
-                <h3>Connected Community</h3>
-
-                <p>
-                    Create a collaborative environment where
-                    learners and teachers can share knowledge.
-                </p>
-
-                <a href="about.jsp">
-                    Learn More
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= COURSES ================= -->
-
-<section class="courses-section">
-
-    <div class="section-container">
-
-
-        <div class="section-heading-row">
-
-            <div>
-
-                <span class="section-label">
-                    POPULAR COURSES
+                <span>
+                    START YOUR JOURNEY
                 </span>
 
                 <h2>
-                    Start Learning
-                    <span>Today</span>
+                    Ready to Build
+                    Your Future?
                 </h2>
 
-            </div>
-
-
-            <a href="courses.jsp"
-               class="view-all-btn">
-
-                View All Courses
-
-                <i class="fas fa-arrow-right"></i>
-
-            </a>
-
-        </div>
-
-
-
-        <div class="course-grid">
-
-
-            <!-- COURSE 1 -->
-
-            <div class="course-card">
-
-                <div class="course-image java">
-
-                    <div class="course-category">
-                        PROGRAMMING
-                    </div>
-
-                    <i class="fab fa-java course-big-icon"></i>
-
-                </div>
-
-
-                <div class="course-content">
-
-                    <div class="course-rating">
-
-                        <i class="fas fa-star"></i>
-
-                        <span>4.9</span>
-
-                    </div>
-
-                    <h3>
-                        Java Programming
-                    </h3>
-
-                    <p>
-                        Learn Java from fundamentals
-                        to advanced programming.
-                    </p>
-
-
-                    <div class="course-meta">
-
-                        <span>
-                            <i class="fas fa-play-circle"></i>
-                            32 Lessons
-                        </span>
-
-                        <span>
-                            <i class="fas fa-clock"></i>
-                            18 Hours
-                        </span>
-
-                    </div>
-
-
-                    <a href="course-details.jsp"
-                       class="course-btn">
-
-                        Start Learning
-
-                        <i class="fas fa-arrow-right"></i>
-
-                    </a>
-
-                </div>
+                <p>
+                    Join Capacity Connect and start
+                    learning valuable skills today.
+                </p>
 
             </div>
-
-
-
-            <!-- COURSE 2 -->
-
-            <div class="course-card">
-
-                <div class="course-image web">
-
-                    <div class="course-category">
-                        DEVELOPMENT
-                    </div>
-
-                    <i class="fas fa-code course-big-icon"></i>
-
-                </div>
-
-
-                <div class="course-content">
-
-                    <div class="course-rating">
-
-                        <i class="fas fa-star"></i>
-
-                        <span>4.8</span>
-
-                    </div>
-
-                    <h3>
-                        Full Stack Web Development
-                    </h3>
-
-                    <p>
-                        Build modern websites and
-                        powerful web applications.
-                    </p>
-
-
-                    <div class="course-meta">
-
-                        <span>
-                            <i class="fas fa-play-circle"></i>
-                            45 Lessons
-                        </span>
-
-                        <span>
-                            <i class="fas fa-clock"></i>
-                            25 Hours
-                        </span>
-
-                    </div>
-
-
-                    <a href="course-details.jsp"
-                       class="course-btn">
-
-                        Start Learning
-
-                        <i class="fas fa-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- COURSE 3 -->
-
-            <div class="course-card">
-
-                <div class="course-image data">
-
-                    <div class="course-category">
-                        DATA
-                    </div>
-
-                    <i class="fas fa-chart-line course-big-icon"></i>
-
-                </div>
-
-
-                <div class="course-content">
-
-                    <div class="course-rating">
-
-                        <i class="fas fa-star"></i>
-
-                        <span>4.7</span>
-
-                    </div>
-
-                    <h3>
-                        Data Analytics
-                    </h3>
-
-                    <p>
-                        Understand data and transform
-                        it into meaningful insights.
-                    </p>
-
-
-                    <div class="course-meta">
-
-                        <span>
-                            <i class="fas fa-play-circle"></i>
-                            28 Lessons
-                        </span>
-
-                        <span>
-                            <i class="fas fa-clock"></i>
-                            16 Hours
-                        </span>
-
-                    </div>
-
-
-                    <a href="course-details.jsp"
-                       class="course-btn">
-
-                        Start Learning
-
-                        <i class="fas fa-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= CTA ================= -->
-
-<section class="cta-section">
-
-    <div class="cta-container">
-
-        <div class="cta-content">
-
-            <span class="section-label">
-                BUILD YOUR FUTURE
-            </span>
-
-            <h2>
-                Your Skills.
-                Your Growth.
-                Your Future.
-            </h2>
-
-            <p>
-                Join Capacity Connect and take the next
-                step toward building the skills that matter.
-            </p>
 
 
             <div class="cta-buttons">
 
-                <a href="register.jsp"
-                   class="btn btn-primary">
+                <a href="register.jsp" class="primary-btn">
 
                     Create Free Account
 
-                    <i class="fas fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
 
                 </a>
 
-
-                <a href="courses.jsp"
-                   class="btn btn-secondary">
+                <a href="courses.jsp" class="secondary-btn">
 
                     Explore Courses
 
@@ -767,24 +1258,19 @@
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- ================= FOOTER ================= -->
+    <!-- ================= FOOTER ================= -->
 
-<%@ include file="includes/footer.jsp" %>
-
-
+    <jsp:include page="includes/footer.jsp"/>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+    <!-- JAVASCRIPT -->
 
-<script src="js/home.js"></script>
-
+    <script src="js/home.js"></script>
+    <script src="js/header.js"></script>
 
 </body>
-
 </html>

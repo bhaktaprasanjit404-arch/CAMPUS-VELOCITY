@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.capacityconnect.controller;
 
 import com.capacityconnect.dao.TeacherDAO;
@@ -26,338 +22,167 @@ public class TeacherServlet extends HttpServlet {
         teacherDAO = new TeacherDAO();
     }
 
-
+    // ==========================================
+    // GET
+    // ==========================================
     @Override
     protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+
+        // Check login
+        if (session == null || session.getAttribute("userId") == null) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
+        // Check role
+        String role = (String) session.getAttribute("role");
+        if (role == null || !role.equals("TEACHER")) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
+        // Get user ID
+        int userId;
+        try {
+            userId = (Integer) session.getAttribute("userId");
+        } catch (Exception e) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+
+        Teacher teacher = teacherDAO.getTeacherByUserId(userId);
+        if (teacher == null) {
+            request.setAttribute("error", "Teacher profile not found.");
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            return;
+        }
+
+        String action = request.getParameter("action");
+        if (action == null || action.isEmpty()) {
+            action = "dashboard";
+        }
+
+        switch (action) {
+            case "dashboard":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("courseCount", teacherDAO.getCourseCount(teacher.getId()));
+                request.setAttribute("studentCount", teacherDAO.getStudentCount(teacher.getId()));
+                request.setAttribute("assignmentCount", teacherDAO.getAssignmentCount(teacher.getId()));
+                request.getRequestDispatcher("/teacher/dashboard.jsp").forward(request, response);
+                break;
+
+            case "courses":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("courses", teacherDAO.getCourses(teacher.getId()));
+                request.getRequestDispatcher("/teacher/my-courses.jsp").forward(request, response);
+                break;
+
+            case "students":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("students", teacherDAO.getStudents(teacher.getId()));
+                request.getRequestDispatcher("/teacher/students.jsp").forward(request, response);
+                break;
+
+            case "attendance":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("courses", teacherDAO.getCourses(teacher.getId()));
+                request.setAttribute("students", teacherDAO.getStudents(teacher.getId()));
+                request.getRequestDispatcher("/teacher/attendance.jsp").forward(request, response);
+                break;
+
+            case "progress":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("progress", teacherDAO.getStudentProgress(teacher.getId()));
+                request.getRequestDispatcher("/teacher/student-progress.jsp").forward(request, response);
+                break;
+
+            case "performance":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("performance", teacherDAO.getPerformance(teacher.getId()));
+                request.getRequestDispatcher("/teacher/performance.jsp").forward(request, response);
+                break;
+
+            case "notifications":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("assignments", teacherDAO.getRecentAssignments(teacher.getId()));
+                request.getRequestDispatcher("/teacher/notifications.jsp").forward(request, response);
+                break;
+
+            case "class-details":
+                request.setAttribute("teacher", teacher);
+                request.setAttribute("courses", teacherDAO.getCourses(teacher.getId()));
+                request.getRequestDispatcher("/teacher/class-details.jsp").forward(request, response);
+                break;
+
+            case "profile":
+                request.setAttribute("teacher", teacher);
+                request.getRequestDispatcher("/teacher/profile.jsp").forward(request, response);
+                break;
+
+            default:
+                response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=dashboard");
+                break;
+        }
+    }
+
+    // ==========================================
+    // POST
+    // ==========================================
+    @Override
+    protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
 
-        // =================================================
-        // TEACHER LOGIN CHECK
-        // =================================================
-
-        if (session == null ||
-            session.getAttribute("userId") == null ||
+        if (session == null || session.getAttribute("userId") == null ||
             !"TEACHER".equals(session.getAttribute("role"))) {
-
-            response.sendRedirect(
-                    request.getContextPath() + "/login.jsp");
-
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
 
-        int userId =
-                (Integer) session.getAttribute("userId");
-
-        // =================================================
-        // GET TEACHER
-        // =================================================
-
-        Teacher teacher =
-                teacherDAO.getTeacherByUserId(userId);
+        int userId = (Integer) session.getAttribute("userId");
+        Teacher teacher = teacherDAO.getTeacherByUserId(userId);
 
         if (teacher == null) {
-
-            response.sendRedirect(
-                    request.getContextPath() + "/login.jsp");
-
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
-
-        // Actual teacher ID from teacher table
-        int teacherId = teacher.getId();
 
         String action = request.getParameter("action");
 
-        if (action == null || action.isEmpty()) {
-            action = "dashboard";
-        }
-
-
-        // =================================================
-        // DASHBOARD
-        // =================================================
-
-        if ("dashboard".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "courseCount",
-                    teacherDAO.getCourseCount(teacherId));
-
-            request.setAttribute(
-                    "studentCount",
-                    teacherDAO.getStudentCount(teacherId));
-
-            request.setAttribute(
-                    "assignmentCount",
-                    teacherDAO.getAssignmentCount(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/dashboard.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // MY COURSES
-        // =================================================
-
-        else if ("courses".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "courses",
-                    teacherDAO.getCourses(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/my-courses.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // STUDENTS
-        // =================================================
-
-        else if ("students".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "students",
-                    teacherDAO.getStudents(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/students.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // ATTENDANCE
-        // =================================================
-
-        else if ("attendance".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "courses",
-                    teacherDAO.getCourses(teacherId));
-
-            request.setAttribute(
-                    "students",
-                    teacherDAO.getStudents(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/attendance.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // STUDENT PROGRESS
-        // =================================================
-
-        else if ("progress".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "progress",
-                    teacherDAO.getStudentProgress(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/student-progress.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // PERFORMANCE
-        // =================================================
-
-        else if ("performance".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "performance",
-                    teacherDAO.getPerformance(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/performance.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // PROFILE
-        // =================================================
-
-        else if ("profile".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.getRequestDispatcher(
-                    "/teacher/profile.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // NOTIFICATIONS
-        // =================================================
-
-        else if ("notifications".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "assignments",
-                    teacherDAO.getRecentAssignments(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/notifications.jsp")
-                    .forward(request, response);
-        }
-
-
-        // =================================================
-        // CLASS DETAILS
-        // =================================================
-
-        else if ("class-details".equals(action)) {
-
-            request.setAttribute(
-                    "teacher",
-                    teacher);
-
-            request.setAttribute(
-                    "courses",
-                    teacherDAO.getCourses(teacherId));
-
-            request.getRequestDispatcher(
-                    "/teacher/class-details.jsp")
-                    .forward(request, response);
-        }
-    }
-
-
-    // =====================================================
-    // POST
-    // =====================================================
-
-    @Override
-    protected void doPost(HttpServletRequest request,
-                           HttpServletResponse response)
-            throws ServletException, IOException {
-
-        HttpSession session = request.getSession(false);
-
-        // =================================================
-        // TEACHER LOGIN CHECK
-        // =================================================
-
-        if (session == null ||
-            session.getAttribute("userId") == null ||
-            !"TEACHER".equals(session.getAttribute("role"))) {
-
-            response.sendRedirect(
-                    request.getContextPath() + "/login.jsp");
-
-            return;
-        }
-
-        int userId =
-                (Integer) session.getAttribute("userId");
-
-        Teacher teacher =
-                teacherDAO.getTeacherByUserId(userId);
-
-        if (teacher == null) {
-
-            response.sendRedirect(
-                    request.getContextPath() + "/login.jsp");
-
-            return;
-        }
-
-
-        String action =
-                request.getParameter("action");
-
-
-        // =================================================
-        // MARK ATTENDANCE
-        // =================================================
-
         if ("markAttendance".equals(action)) {
+            try {
+                int studentId = Integer.parseInt(request.getParameter("studentId"));
+                int courseId = Integer.parseInt(request.getParameter("courseId"));
+                String date = request.getParameter("date");
+                String status = request.getParameter("status");
+                String remarks = request.getParameter("remarks");
 
-            int studentId =
-                    Integer.parseInt(
-                            request.getParameter("studentId"));
-
-            int courseId =
-                    Integer.parseInt(
-                            request.getParameter("courseId"));
-
-            String date =
-                    request.getParameter("date");
-
-            String status =
-                    request.getParameter("status");
-
-            String remarks =
-                    request.getParameter("remarks");
-
-
-            boolean success =
-                    teacherDAO.markAttendance(
-                            studentId,
-                            courseId,
-                            teacher.getId(),
-                            date,
-                            status,
-                            remarks
-                    );
-
-
-            if (success) {
-
-                response.sendRedirect(
-                        request.getContextPath()
-                        + "/TeacherServlet?action=attendance&success=true"
+                boolean success = teacherDAO.markAttendance(
+                        studentId,
+                        courseId,
+                        teacher.getId(),
+                        date,
+                        status,
+                        remarks
                 );
 
-            } else {
-
-                response.sendRedirect(
-                        request.getContextPath()
-                        + "/TeacherServlet?action=attendance&error=true"
-                );
+                if (success) {
+                    response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=attendance&success=true");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=attendance&error=true");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.sendRedirect(request.getContextPath() + "/TeacherServlet?action=attendance&error=true");
             }
+        } else {
+            doGet(request, response);
         }
     }
 }

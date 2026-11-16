@@ -1,0 +1,1054 @@
+/* =========================================================
+   CAPACITY CONNECT
+   PREMIUM GLASS AUTH MODAL
+   Educational Image + White + Strawberry Red + Sea Green
+========================================================= */
+
+:root {
+    --modal-white: #ffffff;
+    --modal-glass: rgba(255, 255, 255, 0.78);
+    --modal-glass-strong: rgba(255, 255, 255, 0.94);
+
+    --modal-green: #e83f5b;
+    --modal-green-dark: #c92d48;
+    --modal-green-light: #fff0f3;
+
+    --modal-red: #e83f5b;
+    --modal-red-dark: #c92d48;
+    --modal-red-light: #fff0f3;
+
+    --modal-sea-green: #1fa58a;
+    --modal-sea-green-dark: #137966;
+    --modal-sea-green-soft: rgba(31, 165, 138, 0.10);
+    --modal-sea-green-glow: rgba(31, 165, 138, 0.24);
+
+    --modal-black: #080808;
+    --modal-text: #202020;
+    --modal-muted: #777777;
+
+    --modal-border: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================================================
+   MAIN MODAL OVERLAY
+========================================================= */
+
+.cc-auth-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(232, 63, 91, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(232, 63, 91, 0.14),
+            transparent 28%
+        ),
+        rgba(8, 8, 8, 0.25);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+/* OPEN STATE */
+
+.cc-auth-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   GLASS WINDOW
+========================================================= */
+
+.cc-auth-window {
+    position: relative;
+
+    width: min(100%, 980px);
+    max-height: 92vh;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.90),
+            rgba(255, 255, 255, 0.68)
+        );
+
+    border: 1px solid var(--modal-border);
+    border-radius: 28px;
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.24),
+        0 10px 35px rgba(232, 63, 91, 0.12);
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    transform: translateY(30px) scale(0.97);
+
+    transition:
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* WINDOW OPEN ANIMATION */
+
+.cc-auth-modal.active .cc-auth-window {
+    transform: translateY(0) scale(1);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.cc-auth-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 50;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(8, 8, 8, 0.08);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--modal-black);
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.cc-auth-close:hover {
+    background: var(--modal-sea-green);
+    color: #ffffff;
+    border-color: var(--modal-sea-green);
+
+    transform: rotate(90deg);
+
+    box-shadow: 0 8px 20px var(--modal-sea-green-glow);
+}
+
+
+/* =========================================================
+   LEFT VISUAL SECTION — IMAGE BACKGROUND
+========================================================= */
+
+.cc-auth-visual {
+    position: relative;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 45, 42, 0.45),
+            rgba(12, 65, 58, 0.30),
+            rgba(8, 25, 30, 0.65)
+        ),
+        url("../images/auth-background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* DECORATIVE WHITE CIRCLE */
+
+.cc-auth-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    top: -130px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* DECORATIVE SEA-GREEN CIRCLE */
+
+.cc-auth-visual::after {
+    content: "";
+
+    position: absolute;
+
+    width: 290px;
+    height: 290px;
+
+    bottom: -130px;
+    left: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(31, 165, 138, 0.20);
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* =========================================================
+   VISUAL INNER
+========================================================= */
+
+.cc-auth-visual-inner {
+    position: relative;
+    z-index: 2;
+
+    height: 100%;
+    min-height: 650px;
+
+    padding: 48px 42px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.35)
+        );
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.cc-auth-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cc-auth-logo-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.17);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+
+    font-size: 20px;
+}
+
+.cc-auth-logo-title {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.cc-auth-logo-subtitle {
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: 0.20em;
+    opacity: 0.72;
+}
+
+
+/* =========================================================
+   VISUAL CONTENT
+========================================================= */
+
+.cc-auth-visual-content {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+/* EYEBROW */
+
+.cc-auth-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+
+    border-radius: 100px;
+
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.cc-auth-eyebrow i {
+    color: #ffffff;
+    font-size: 7px;
+}
+
+
+/* MAIN HEADING */
+
+.cc-auth-visual h1 {
+    margin: 25px 0 18px;
+
+    font-size: clamp(38px, 4vw, 60px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+}
+
+.cc-auth-visual h1 span {
+    color: #ffffff;
+}
+
+
+/* DESCRIPTION */
+
+.cc-auth-visual p {
+    max-width: 350px;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   VISUAL FOOTER
+========================================================= */
+
+.cc-auth-visual-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   RIGHT FORM CONTENT
+========================================================= */
+
+.cc-auth-content {
+    position: relative;
+
+    padding: 48px 52px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(255, 255, 255, 0.75)
+        );
+
+    overflow-y: auto;
+}
+
+
+/* CONTENT SCROLLBAR */
+
+.cc-auth-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.cc-auth-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cc-auth-content::-webkit-scrollbar-thumb {
+    background: var(--modal-green);
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.cc-auth-heading {
+    margin-bottom: 24px;
+}
+
+.cc-auth-small {
+    color: var(--modal-green-dark);
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+}
+
+.cc-auth-heading h2 {
+    margin: 7px 0;
+
+    color: var(--modal-black);
+
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.cc-auth-heading p {
+    margin: 0;
+
+    color: var(--modal-muted);
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LOGIN ROLE TABS
+========================================================= */
+
+.cc-auth-role-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 7px;
+    margin-bottom: 20px;
+}
+
+.cc-auth-role-tabs .role-tab {
+    position: relative;
+
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+
+    border: 1px solid #e5e9e7;
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.72);
+    color: #777777;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.cc-auth-role-tabs .role-tab i {
+    font-size: 15px;
+}
+
+.cc-auth-role-tabs .role-tab span {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* ROLE HOVER */
+
+.cc-auth-role-tabs .role-tab:hover {
+    border-color: var(--modal-sea-green);
+    color: var(--modal-sea-green-dark);
+
+    background: var(--modal-sea-green-soft);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 6px 18px rgba(31, 165, 138, 0.10);
+}
+
+
+/* ROLE ACTIVE */
+
+.cc-auth-role-tabs .role-tab.active {
+    border-color: rgba(232, 63, 91, 0.40);
+
+    background: var(--modal-green-light);
+    color: var(--modal-green-dark);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(232, 63, 91, 0.06);
+}
+
+
+/* =========================================================
+   LOGIN FORMS
+========================================================= */
+
+.cc-auth-form {
+    display: none;
+    animation: ccFormIn 0.3s ease;
+}
+
+.cc-auth-form.active {
+    display: block;
+}
+
+
+/* FORM ANIMATION */
+
+@keyframes ccFormIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.cc-field {
+    margin-bottom: 15px;
+}
+
+.cc-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #444444;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+}
+
+
+/* =========================================================
+   FIELD BOX
+========================================================= */
+
+.cc-field-box {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+.cc-field-box > i {
+    position: absolute;
+    left: 15px;
+    z-index: 2;
+
+    color: var(--modal-green);
+
+    font-size: 13px;
+}
+
+
+/* INPUT */
+
+.cc-field-box input,
+.cc-field-box textarea {
+    width: 100%;
+
+    padding: 13px 42px 13px 42px;
+
+    border: 1px solid #e1e7e4;
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--modal-black);
+
+    font-family: inherit;
+    font-size: 12px;
+
+    transition: all 0.25s ease;
+}
+
+
+/* TEXTAREA */
+
+.cc-field-box textarea {
+    resize: vertical;
+    min-height: 80px;
+    padding-top: 13px;
+}
+
+
+/* INPUT HOVER */
+
+.cc-field-box input:hover,
+.cc-field-box textarea:hover {
+    border-color: rgba(31, 165, 138, 0.55);
+}
+
+
+/* INPUT FOCUS */
+
+.cc-field-box input:focus,
+.cc-field-box textarea:focus {
+    border-color: var(--modal-sea-green);
+
+    background: #ffffff;
+
+    box-shadow: 0 0 0 4px var(--modal-sea-green-soft);
+}
+
+
+/* PLACEHOLDER */
+
+.cc-field-box input::placeholder,
+.cc-field-box textarea::placeholder {
+    color: #aaaaaa;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.cc-password-toggle {
+    position: absolute;
+    right: 10px;
+
+    border: 0;
+    background: transparent;
+
+    color: #999999;
+
+    cursor: pointer;
+    padding: 8px;
+
+    transition: color 0.2s ease;
+}
+
+.cc-password-toggle:hover {
+    color: var(--modal-sea-green-dark);
+}
+
+
+/* =========================================================
+   MAIN SUBMIT BUTTON
+========================================================= */
+
+.cc-auth-submit {
+    width: 100%;
+    min-height: 48px;
+
+    margin-top: 5px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background: var(--modal-green);
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 24px rgba(232, 63, 91, 0.18);
+
+    transition: all 0.30s ease;
+}
+
+
+/* BUTTON HOVER */
+
+.cc-auth-submit:hover {
+    background:
+        linear-gradient(
+            135deg,
+            var(--modal-sea-green-dark),
+            var(--modal-sea-green)
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 26px var(--modal-sea-green-glow);
+}
+
+
+/* ARROW */
+
+.cc-auth-submit i {
+    transition: transform 0.25s ease;
+}
+
+.cc-auth-submit:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   ADMIN WARNING
+========================================================= */
+
+.cc-admin-warning {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+    padding: 12px;
+
+    border: 1px solid rgba(232, 63, 91, 0.15);
+    border-radius: 12px;
+
+    background: var(--modal-red-light);
+}
+
+.cc-admin-warning > i {
+    color: var(--modal-red);
+    font-size: 17px;
+}
+
+.cc-admin-warning strong {
+    display: block;
+
+    color: var(--modal-black);
+    font-size: 11px;
+}
+
+.cc-admin-warning span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--modal-muted);
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   BOTTOM LINK
+========================================================= */
+
+.cc-auth-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 18px;
+
+    font-size: 11px;
+    color: #888888;
+}
+
+.cc-auth-bottom a {
+    color: var(--modal-green-dark);
+
+    font-weight: 900;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.cc-auth-bottom a:hover {
+    color: var(--modal-sea-green-dark);
+    text-decoration: underline;
+    text-decoration-color: var(--modal-sea-green);
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+.cc-auth-security {
+    margin-top: 18px;
+
+    text-align: center;
+
+    color: #999999;
+    font-size: 9px;
+}
+
+.cc-auth-security i {
+    color: var(--modal-green);
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   REGISTER ROLE BUTTONS
+========================================================= */
+
+.cc-register-role {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.cc-register-role button {
+    min-height: 48px;
+
+    border: 1px solid #e2e7e4;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.70);
+    color: #777777;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.cc-register-role button i {
+    margin-right: 6px;
+}
+
+
+/* REGISTER HOVER */
+
+.cc-register-role button:hover {
+    color: var(--modal-sea-green-dark);
+
+    border-color: var(--modal-sea-green);
+    background: var(--modal-sea-green-soft);
+
+    box-shadow: 0 6px 18px rgba(31, 165, 138, 0.10);
+}
+
+
+/* REGISTER ACTIVE */
+
+.cc-register-role button.active {
+    color: var(--modal-green-dark);
+
+    background: var(--modal-green-light);
+
+    border-color: rgba(232, 63, 91, 0.35);
+}
+
+
+/* =========================================================
+   REGISTER FORMS
+========================================================= */
+
+.cc-register-form {
+    display: none;
+    animation: ccFormIn 0.3s ease;
+}
+
+.cc-register-form.active {
+    display: block;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+========================================================= */
+
+.cc-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.cc-auth-error {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 11px 13px;
+    margin-bottom: 15px;
+
+    border-radius: 11px;
+
+    background: var(--modal-red-light);
+    border: 1px solid rgba(232, 63, 91, 0.15);
+
+    color: var(--modal-red);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 820px) {
+
+    .cc-auth-modal {
+        padding: 15px;
+    }
+
+    .cc-auth-window {
+        grid-template-columns: 1fr;
+
+        max-height: 94vh;
+        border-radius: 22px;
+    }
+
+    .cc-auth-visual {
+        display: none;
+    }
+
+    .cc-auth-content {
+        padding: 42px 25px 28px;
+    }
+
+    .cc-auth-close {
+        right: 14px;
+        top: 14px;
+
+        width: 38px;
+        height: 38px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .cc-auth-content {
+        padding: 38px 18px 22px;
+    }
+
+    .cc-auth-heading h2 {
+        font-size: 30px;
+    }
+
+    .cc-auth-role-tabs {
+        gap: 5px;
+    }
+
+    .cc-auth-role-tabs .role-tab {
+        min-height: 55px;
+    }
+
+    .cc-two-column {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+
+/* =========================================================
+   BODY LOCK WHEN MODAL IS OPEN
+========================================================= */
+
+body.cc-modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+.cc-auth-modal ::selection {
+    background: var(--modal-green);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
+
+.cc-auth-close:focus-visible,
+.cc-auth-role-tabs .role-tab:focus-visible,
+.cc-password-toggle:focus-visible,
+.cc-auth-submit:focus-visible,
+.cc-register-role button:focus-visible,
+.cc-auth-bottom a:focus-visible {
+    outline: 2px solid var(--modal-sea-green);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cc-auth-close,
+    .cc-auth-role-tabs .role-tab,
+    .cc-field-box input,
+    .cc-field-box textarea,
+    .cc-password-toggle,
+    .cc-auth-submit,
+    .cc-register-role button,
+    .cc-auth-bottom a {
+        transition: none !important;
+    }
+}

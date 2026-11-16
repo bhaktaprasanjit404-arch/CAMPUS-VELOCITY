@@ -6,197 +6,39 @@ import com.capacityconnect.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class UserDAO {
 
 
-    // =====================================================
-    // STUDENT LOGIN
-    // TABLE: users
+    // =========================================================
+    // STUDENT / USER REGISTRATION
     //
-    // id
-    // name
-    // email
-    // password
-    // role
-    // =====================================================
+    // Data is stored only in users table.
+    // =========================================================
 
-    public User loginStudent(int id,
-                             String name,
-                             String password) {
-
-        User user = null;
-
-        String sql =
-                "SELECT id, name, email, password, role " +
-                "FROM users " +
-                "WHERE id = ? " +
-                "AND name = ? " +
-                "AND password = ? " +
-                "AND role = 'STUDENT'";
-
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, id);
-            ps.setString(2, name);
-            ps.setString(3, password);
-
-
-            try (ResultSet rs = ps.executeQuery()) {
-
-                if (rs.next()) {
-
-                    user = new User();
-
-                    user.setId(rs.getInt("id"));
-                    user.setName(rs.getString("name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
-                    user.setRole(rs.getString("role"));
-                }
-            }
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-        return user;
-    }
-
-
-    // =====================================================
-    // TEACHER LOGIN
-    //
-    // teachers:
-    // id
-    // user_id
-    //
-    // users:
-    // id
-    // password
-    // role
-    // =====================================================
-
-    public User loginTeacher(int teacherId,
-                             int userId,
-                             String password) {
-
-        User user = null;
-
-        String sql =
-                "SELECT u.id, u.name, u.email, " +
-                "u.password, u.role " +
-                "FROM teachers t " +
-                "INNER JOIN users u " +
-                "ON t.user_id = u.id " +
-                "WHERE t.id = ? " +
-                "AND t.user_id = ? " +
-                "AND u.password = ? " +
-                "AND u.role = 'TEACHER'";
-
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, teacherId);
-            ps.setInt(2, userId);
-            ps.setString(3, password);
-
-
-            try (ResultSet rs = ps.executeQuery()) {
-
-                if (rs.next()) {
-
-                    user = new User();
-
-                    user.setId(rs.getInt("id"));
-                    user.setName(rs.getString("name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setPassword(rs.getString("password"));
-                    user.setRole(rs.getString("role"));
-                }
-            }
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-        return user;
-    }
-
-
-    // =====================================================
-    // ADMIN LOGIN
-    //
-    // TABLE: admin
-    //
-    // username
-    // password
-    // =====================================================
-
-    public boolean loginAdmin(String username,
-                              String password) {
-
-        String sql =
-                "SELECT username " +
-                "FROM admin " +
-                "WHERE username = ? " +
-                "AND password = ?";
-
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setString(1, username);
-            ps.setString(2, password);
-
-
-            try (ResultSet rs = ps.executeQuery()) {
-
-                return rs.next();
-            }
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-            return false;
-        }
-    }
-
-
-    // =====================================================
-    // STUDENT REGISTRATION
-    //
-    // Students are stored in USERS table.
-    //
-    // users:
-    // name
-    // email
-    // password
-    // role = STUDENT
-    // =====================================================
-
-    public boolean registerStudent(User user) {
+    public boolean registerStudent(
+            String name,
+            String email,
+            String password) {
 
         String sql =
                 "INSERT INTO users " +
                 "(name, email, password, role) " +
                 "VALUES (?, ?, ?, 'STUDENT')";
 
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, password);
 
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getEmail());
-            ps.setString(3, user.getPassword());
+            int result = ps.executeUpdate();
 
-            return ps.executeUpdate() > 0;
+            return result > 0;
 
         } catch (Exception e) {
 
@@ -207,97 +49,149 @@ public class UserDAO {
     }
 
 
-    // =====================================================
+    // =========================================================
     // TEACHER REGISTRATION
     //
-    // STEP 1 → users
-    // STEP 2 → get generated users.id
-    // STEP 3 → teachers using user_id
-    // =====================================================
+    // STEP 1:
+    // Insert teacher login information into users table.
+    //
+    // STEP 2:
+    // Get generated users.id.
+    //
+    // STEP 3:
+    // Insert teacher information into teachers table.
+    //
+    // Both operations use one transaction.
+    // =========================================================
 
     public boolean registerTeacher(
-            User user,
+            String name,
+            String email,
+            String password,
             String qualification,
             String specialization,
             String phone,
             String bio) {
 
+
         Connection con = null;
+
+
+        String userSQL =
+                "INSERT INTO users " +
+                "(name, email, password, role) " +
+                "VALUES (?, ?, ?, 'TEACHER')";
+
+
+        String teacherSQL =
+                "INSERT INTO teachers " +
+                "(name, user_id, qualification, specialization, phone, bio) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
 
         try {
 
             con = DBConnection.getConnection();
 
+            // Start transaction
             con.setAutoCommit(false);
 
 
-            // ---------------------------------------------
-            // STEP 1: INSERT INTO USERS
-            // ---------------------------------------------
+            // =================================================
+            // STEP 1 - INSERT INTO USERS
+            // =================================================
 
-            String userSql =
-                    "INSERT INTO users " +
-                    "(name, email, password, role) " +
-                    "VALUES (?, ?, ?, 'TEACHER')";
-
-
-            int userId;
+            PreparedStatement userPS =
+                    con.prepareStatement(
+                            userSQL,
+                            Statement.RETURN_GENERATED_KEYS
+                    );
 
 
-            try (PreparedStatement ps =
-                         con.prepareStatement(
-                                 userSql,
-                                 java.sql.Statement.RETURN_GENERATED_KEYS)) {
+            userPS.setString(1, name);
+            userPS.setString(2, email);
+            userPS.setString(3, password);
 
 
-                ps.setString(1, user.getName());
-                ps.setString(2, user.getEmail());
-                ps.setString(3, user.getPassword());
-
-                ps.executeUpdate();
+            int userResult =
+                    userPS.executeUpdate();
 
 
-                try (ResultSet rs = ps.getGeneratedKeys()) {
+            if (userResult == 0) {
 
-                    if (!rs.next()) {
+                con.rollback();
 
-                        con.rollback();
+                userPS.close();
 
-                        return false;
-                    }
-
-                    userId = rs.getInt(1);
-                }
+                return false;
             }
 
 
-            // ---------------------------------------------
-            // STEP 2: INSERT INTO TEACHERS
-            // ---------------------------------------------
+            // =================================================
+            // STEP 2 - GET GENERATED USER ID
+            // =================================================
 
-            String teacherSql =
-                    "INSERT INTO teachers " +
-                    "(user_id, qualification, specialization, phone, bio) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+            int userId = 0;
+
+            ResultSet keys =
+                    userPS.getGeneratedKeys();
 
 
-            try (PreparedStatement ps =
-                         con.prepareStatement(teacherSql)) {
+            if (keys.next()) {
 
-                ps.setInt(1, userId);
-                ps.setString(2, qualification);
-                ps.setString(3, specialization);
-                ps.setString(4, phone);
-                ps.setString(5, bio);
+                userId = keys.getInt(1);
 
-                ps.executeUpdate();
+            } else {
+
+                keys.close();
+                userPS.close();
+
+                con.rollback();
+
+                return false;
             }
 
 
-            // ---------------------------------------------
-            // STEP 3: COMMIT
-            // ---------------------------------------------
+            keys.close();
+            userPS.close();
+
+
+            // =================================================
+            // STEP 3 - INSERT INTO TEACHERS
+            // =================================================
+
+            PreparedStatement teacherPS =
+                    con.prepareStatement(teacherSQL);
+
+
+            teacherPS.setString(1, name);
+            teacherPS.setInt(2, userId);
+            teacherPS.setString(3, qualification);
+            teacherPS.setString(4, specialization);
+            teacherPS.setString(5, phone);
+            teacherPS.setString(6, bio);
+
+
+            int teacherResult =
+                    teacherPS.executeUpdate();
+
+
+            if (teacherResult == 0) {
+
+                teacherPS.close();
+
+                con.rollback();
+
+                return false;
+            }
+
+
+            teacherPS.close();
+
+
+            // =================================================
+            // EVERYTHING SUCCESSFUL
+            // =================================================
 
             con.commit();
 
@@ -312,6 +206,7 @@ public class UserDAO {
             try {
 
                 if (con != null) {
+
                     con.rollback();
                 }
 
@@ -319,6 +214,7 @@ public class UserDAO {
 
                 rollbackError.printStackTrace();
             }
+
 
             return false;
 
@@ -330,14 +226,273 @@ public class UserDAO {
                 if (con != null) {
 
                     con.setAutoCommit(true);
-                    con.close();
 
+                    con.close();
                 }
 
-            } catch (Exception closeError) {
+            } catch (Exception e) {
 
-                closeError.printStackTrace();
+                e.printStackTrace();
             }
+        }
+    }
+
+
+    // =========================================================
+    // USER / STUDENT LOGIN
+    //
+    // Login JSP sends:
+    //
+    // userName
+    // userEmail
+    //
+    // Database:
+    //
+    // users.name
+    // users.email
+    //
+    // Role must be STUDENT.
+    // =========================================================
+
+    public User loginUser(
+            String name,
+            String email) {
+
+
+        String sql =
+                "SELECT id, name, email, password, role " +
+                "FROM users " +
+                "WHERE name = ? " +
+                "AND email = ? " +
+                "AND role = 'STUDENT'";
+
+
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+
+            ps.setString(1, name);
+            ps.setString(2, email);
+
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+
+            if (rs.next()) {
+
+
+                User user =
+                        new User();
+
+
+                user.setId(
+                        rs.getInt("id")
+                );
+
+
+                user.setName(
+                        rs.getString("name")
+                );
+
+
+                user.setEmail(
+                        rs.getString("email")
+                );
+
+
+                user.setPassword(
+                        rs.getString("password")
+                );
+
+
+                user.setRole(
+                        rs.getString("role")
+                );
+
+
+                rs.close();
+
+
+                return user;
+            }
+
+
+            rs.close();
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+
+    // =========================================================
+    // TEACHER LOGIN
+    //
+    // Login JSP sends:
+    //
+    // teacherName
+    // teacherPhone
+    //
+    // teachers table:
+    //
+    // teachers.name
+    // teachers.phone
+    //
+    // users table:
+    //
+    // users.id
+    // users.name
+    // users.email
+    // users.password
+    // users.role
+    //
+    // JOIN:
+    //
+    // teachers.user_id = users.id
+    // =========================================================
+
+    public User loginTeacher(
+            String name,
+            String phone) {
+
+
+        String sql =
+                "SELECT u.id, u.name, u.email, " +
+                "u.password, u.role " +
+                "FROM users u " +
+                "INNER JOIN teachers t " +
+                "ON u.id = t.user_id " +
+                "WHERE t.name = ? " +
+                "AND t.phone = ? " +
+                "AND u.role = 'TEACHER'";
+
+
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+
+            ps.setString(1, name);
+            ps.setString(2, phone);
+
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+
+            if (rs.next()) {
+
+
+                User teacher =
+                        new User();
+
+
+                teacher.setId(
+                        rs.getInt("id")
+                );
+
+
+                teacher.setName(
+                        rs.getString("name")
+                );
+
+
+                teacher.setEmail(
+                        rs.getString("email")
+                );
+
+
+                teacher.setPassword(
+                        rs.getString("password")
+                );
+
+
+                teacher.setRole(
+                        rs.getString("role")
+                );
+
+
+                rs.close();
+
+
+                return teacher;
+            }
+
+
+            rs.close();
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+
+    // =========================================================
+    // ADMIN LOGIN
+    //
+    // Admin is NOT stored in users table.
+    //
+    // Admin table:
+    //
+    // username
+    // password
+    // =========================================================
+
+    public boolean loginAdmin(
+            String username,
+            String password) {
+
+
+        String sql =
+                "SELECT username " +
+                "FROM admin " +
+                "WHERE username = ? " +
+                "AND password = ?";
+
+
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)
+        ) {
+
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+
+            boolean valid =
+                    rs.next();
+
+
+            rs.close();
+
+
+            return valid;
+
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return false;
         }
     }
 }

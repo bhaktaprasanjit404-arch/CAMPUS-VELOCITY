@@ -204,7 +204,7 @@ public class AdminServlet extends HttpServlet {
 
             }
 
-            else if ("add-event".equals(action)) {
+            else if ("events".equals(action)) {
 
                 addEvent(request, response);
 

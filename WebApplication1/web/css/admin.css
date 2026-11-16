@@ -1653,3 +1653,1233 @@ textarea.form-control {
     }
 
 }
+/* =========================================================
+   CAPACITY CONNECT
+   ADMIN PANEL — PREMIUM BRAND OVERRIDE
+
+   BRAND:
+   Strawberry Red + White + Sea Green + Minimal Black
+
+   IMPORTANT:
+   Existing class names are NOT changed.
+========================================================= */
+
+
+/* =========================================================
+   BRAND VARIABLES
+========================================================= */
+
+:root {
+
+    --admin-dark: #080808;
+    --admin-dark-2: #111111;
+
+    --admin-blue: #e83f5b;
+    --admin-purple: #e83f5b;
+
+    --admin-text: #080808;
+    --admin-muted: #777777;
+
+    --admin-border: #e8e8e8;
+    --admin-bg: #f7f7f5;
+
+    --white: #ffffff;
+
+    --strawberry: #e83f5b;
+    --strawberry-dark: #c92d48;
+
+    --sea-green: #1fa58a;
+    --sea-green-dark: #137966;
+
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    background: #f7f7f5;
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   ADMIN SIDEBAR
+   Mostly WHITE to match main website
+========================================================= */
+
+.admin-sidebar {
+
+    color: #080808;
+
+    background:
+        radial-gradient(
+            circle at 5% 0%,
+            rgba(232,63,91,.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(31,165,138,.08),
+            transparent 28%
+        ),
+        #ffffff;
+
+    border-right: 1px solid #e8e8e8;
+
+    box-shadow:
+        8px 0 35px rgba(0,0,0,.035);
+
+}
+
+
+/* =========================================================
+   ADMIN LOGO
+========================================================= */
+
+.admin-logo {
+
+    color: #080808;
+
+}
+
+
+.admin-logo-icon {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83f5b,
+            #c92d48
+        );
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 25px rgba(232,63,91,.22);
+
+}
+
+
+.admin-logo-text strong {
+
+    color: #080808;
+
+}
+
+
+.admin-logo-text span {
+
+    color: #777777;
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   ADMIN PROFILE
+========================================================= */
+
+.admin-profile {
+
+    background: #f8f8f7;
+
+    border: 1px solid #e9e9e9;
+
+}
+
+
+.admin-avatar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #080808,
+            #252525
+        );
+
+    color: #ffffff;
+
+}
+
+
+.admin-profile-text strong {
+
+    color: #080808;
+
+}
+
+
+.admin-profile-text span {
+
+    color: #999999;
+
+}
+
+
+.online-dot {
+
+    background: #1fa58a;
+
+    box-shadow:
+        0 0 0 4px rgba(31,165,138,.10);
+
+}
+
+
+/* =========================================================
+   NAVIGATION LABEL
+========================================================= */
+
+.nav-label {
+
+    color: #aaaaaa;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.admin-nav-link {
+
+    color: #777777;
+
+}
+
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+
+    color: #080808;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(232,63,91,.10),
+            rgba(31,165,138,.06)
+        );
+
+}
+
+
+.admin-nav-link:hover i,
+.admin-nav-link.active i {
+
+    color: #e83f5b;
+
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+
+    border-top:
+        1px solid #e8e8e8;
+
+}
+
+
+.sidebar-home,
+.sidebar-logout {
+
+    color: #888888;
+
+}
+
+
+.sidebar-home:hover {
+
+    color: #080808;
+
+}
+
+
+.sidebar-logout:hover {
+
+    color: #e83f5b;
+
+}
+
+
+/* =========================================================
+   MAIN AREA
+========================================================= */
+
+.admin-main {
+
+    background: #f7f7f5;
+
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.admin-topbar {
+
+    background: #ffffff;
+
+    border-bottom:
+        1px solid #e8e8e8;
+
+}
+
+
+.topbar-heading span {
+
+    color: #e83f5b;
+
+}
+
+
+.topbar-heading h1 {
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   TOPBAR ICON
+========================================================= */
+
+.top-icon {
+
+    border:
+        1px solid #e5e5e5;
+
+    background: #ffffff;
+
+    color: #666666;
+
+    transition: .25s ease;
+
+}
+
+
+.top-icon:hover {
+
+    color: #e83f5b;
+
+    border-color: rgba(232,63,91,.35);
+
+    background: #fff7f8;
+
+}
+
+
+.notification-dot {
+
+    background: #e83f5b;
+
+}
+
+
+/* =========================================================
+   TOPBAR USER
+========================================================= */
+
+.topbar-avatar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83f5b,
+            #c92d48
+        );
+
+    color: #ffffff;
+
+}
+
+
+.topbar-user strong {
+
+    color: #080808;
+
+}
+
+
+.topbar-user span {
+
+    color: #999999;
+
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.admin-content {
+
+    background: #f7f7f5;
+
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header h2 {
+
+    color: #080808;
+
+}
+
+
+.page-header p {
+
+    color: #777777;
+
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primary-btn {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83f5b,
+            #c92d48
+        );
+
+    box-shadow:
+        0 8px 20px rgba(232,63,91,.18);
+
+}
+
+
+.primary-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #c92d48,
+            #e83f5b
+        );
+
+    box-shadow:
+        0 14px 28px rgba(232,63,91,.25);
+
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.secondary-btn {
+
+    border:
+        1px solid #dddddd;
+
+    color: #555555;
+
+    background: #ffffff;
+
+    transition: .25s ease;
+
+}
+
+
+.secondary-btn:hover {
+
+    color: #080808;
+
+    border-color: #1fa58a;
+
+    background: #f5fffc;
+
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stat-card {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e6e6e6;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.035);
+
+}
+
+
+.stat-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(232,63,91,.25);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* =========================================================
+   STAT CARD DECORATION
+========================================================= */
+
+.stat-card::after {
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(232,63,91,.08),
+            transparent 70%
+        );
+
+}
+
+
+/* =========================================================
+   STAT ICON — DEFAULT
+========================================================= */
+
+.stat-icon {
+
+    background:
+        rgba(232,63,91,.08);
+
+    color: #e83f5b;
+
+}
+
+
+/* =========================================================
+   STAT ICON — PURPLE CLASS
+   Keep existing class name
+========================================================= */
+
+.stat-card.purple .stat-icon {
+
+    color: #1fa58a;
+
+    background:
+        rgba(31,165,138,.10);
+
+}
+
+
+/* =========================================================
+   STAT ICON — GREEN CLASS
+========================================================= */
+
+.stat-card.green .stat-icon {
+
+    color: #1fa58a;
+
+    background:
+        rgba(31,165,138,.10);
+
+}
+
+
+/* =========================================================
+   STAT ICON — ORANGE CLASS
+========================================================= */
+
+.stat-card.orange .stat-icon {
+
+    color: #e83f5b;
+
+    background:
+        rgba(232,63,91,.08);
+
+}
+
+
+/* =========================================================
+   STAT NUMBER
+========================================================= */
+
+.stat-number {
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   STAT LABEL
+========================================================= */
+
+.stat-label {
+
+    color: #888888;
+
+}
+
+
+/* =========================================================
+   STAT GROWTH
+========================================================= */
+
+.stat-growth {
+
+    color: #1fa58a;
+
+}
+
+
+/* =========================================================
+   ADMIN PANELS
+========================================================= */
+
+.admin-panel {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.025);
+
+}
+
+
+/* =========================================================
+   PANEL HEADING
+========================================================= */
+
+.panel-heading {
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+.panel-heading h3 {
+
+    color: #080808;
+
+}
+
+
+.panel-heading a {
+
+    color: #e83f5b;
+
+}
+
+
+.panel-heading a:hover {
+
+    color: #137966;
+
+}
+
+
+/* =========================================================
+   PANEL BODY
+========================================================= */
+
+.panel-body {
+
+    background: #ffffff;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.admin-table th {
+
+    color: #888888;
+
+    background: #fafafa;
+
+    border-bottom:
+        1px solid #e6e6e6;
+
+}
+
+
+.admin-table td {
+
+    color: #555555;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+.admin-table tr:hover td {
+
+    background: #fffafa;
+
+}
+
+
+/* =========================================================
+   TABLE USER
+========================================================= */
+
+.table-avatar {
+
+    background:
+        rgba(232,63,91,.08);
+
+    color: #e83f5b;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    border:
+        1px solid transparent;
+
+}
+
+
+/* ACTIVE */
+
+.status.active {
+
+    color: #137966;
+
+    background:
+        rgba(31,165,138,.10);
+
+    border-color:
+        rgba(31,165,138,.16);
+
+}
+
+
+/* DRAFT */
+
+.status.draft {
+
+    color: #c92d48;
+
+    background:
+        rgba(232,63,91,.08);
+
+    border-color:
+        rgba(232,63,91,.15);
+
+}
+
+
+/* COMPLETED */
+
+.status.completed {
+
+    color: #137966;
+
+    background:
+        rgba(31,165,138,.10);
+
+    border-color:
+        rgba(31,165,138,.15);
+
+}
+
+
+/* =========================================================
+   TABLE ACTION BUTTONS
+========================================================= */
+
+.table-action {
+
+    border:
+        1px solid #e4e4e4;
+
+    color: #777777;
+
+    background: #ffffff;
+
+    transition: .25s ease;
+
+}
+
+
+.table-action:hover {
+
+    color: #e83f5b;
+
+    border-color:
+        rgba(232,63,91,.30);
+
+    background:
+        #fff7f8;
+
+}
+
+
+.table-action.delete:hover {
+
+    color: #c92d48;
+
+    border-color:
+        rgba(232,63,91,.35);
+
+    background:
+        #fff5f6;
+
+}
+
+
+/* =========================================================
+   FORM PANEL
+========================================================= */
+
+.form-panel {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.035);
+
+}
+
+
+/* =========================================================
+   FORM LABEL
+========================================================= */
+
+.form-label {
+
+    color: #444444;
+
+}
+
+
+/* =========================================================
+   FORM CONTROL
+========================================================= */
+
+.form-control {
+
+    border:
+        1px solid #dddddd;
+
+    background: #fafafa;
+
+    color: #080808;
+
+}
+
+
+.form-control::placeholder {
+
+    color: #aaaaaa;
+
+}
+
+
+.form-control:focus {
+
+    border-color: #e83f5b;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 4px rgba(232,63,91,.07);
+
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.form-actions {
+
+    border-top:
+        1px solid #e8e8e8;
+
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-action {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e4e4e4;
+
+    color: #080808;
+
+    transition: .25s ease;
+
+}
+
+
+.quick-action:hover {
+
+    border-color:
+        rgba(232,63,91,.30);
+
+    background:
+        #fffafa;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.05);
+
+}
+
+
+.quick-action i {
+
+    color: #e83f5b;
+
+}
+
+
+.quick-action strong {
+
+    color: #080808;
+
+}
+
+
+.quick-action span {
+
+    color: #999999;
+
+}
+
+
+/* =========================================================
+   QUICK ACTION ALTERNATING ACCENT
+========================================================= */
+
+.quick-action:nth-child(even) i {
+
+    color: #1fa58a;
+
+}
+
+
+/* =========================================================
+   REPORT CARDS
+========================================================= */
+
+.report-card {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.025);
+
+    transition: .25s ease;
+
+}
+
+
+.report-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(232,63,91,.25);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.07);
+
+}
+
+
+.report-card h3 {
+
+    color: #080808;
+
+}
+
+
+.report-value {
+
+    color: #080808;
+
+}
+
+
+.report-description {
+
+    color: #999999;
+
+}
+
+
+/* =========================================================
+   REPORT CARD ACCENTS
+========================================================= */
+
+.report-card:nth-child(1)::before,
+.report-card:nth-child(2)::before,
+.report-card:nth-child(3)::before {
+
+    content: "";
+
+    display: block;
+
+    width: 35px;
+
+    height: 3px;
+
+    margin-bottom: 16px;
+
+    border-radius: 10px;
+
+    background: #e83f5b;
+
+}
+
+
+.report-card:nth-child(2)::before {
+
+    background: #1fa58a;
+
+}
+
+
+.report-card:nth-child(3)::before {
+
+    background: #080808;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+
+    color: #999999;
+
+}
+
+
+.empty-state i {
+
+    color: #e83f5b;
+
+    opacity: .65;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.admin-footer {
+
+    border-top:
+        1px solid #e7e7e7;
+
+    color: #999999;
+
+    background: #ffffff;
+
+}
+
+
+.admin-footer strong {
+
+    color: #080808;
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu {
+
+    color: #080808;
+
+}
+
+
+.mobile-menu:hover {
+
+    color: #e83f5b;
+
+}
+
+
+/* =========================================================
+   SIDEBAR MOBILE OVERLAY
+========================================================= */
+
+.sidebar-overlay.show {
+
+    background:
+        rgba(0,0,0,.30);
+
+}
+
+
+/* =========================================================
+   PREMIUM MICRO INTERACTIONS
+========================================================= */
+
+.admin-nav-link,
+.primary-btn,
+.secondary-btn,
+.top-icon,
+.table-action,
+.quick-action,
+.stat-card,
+.report-card {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.admin-sidebar::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar {
+
+    width: 5px;
+    height: 5px;
+
+}
+
+
+.admin-sidebar::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+
+.admin-sidebar::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb {
+
+    background: #dddddd;
+
+    border-radius: 20px;
+
+}
+
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover,
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+
+    background: #e83f5b;
+
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+
+    background: #e83f5b;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   FINAL BRAND TOUCH
+========================================================= */
+
+.admin-content::before {
+
+    content: "";
+
+    display: block;
+
+    position: fixed;
+
+    pointer-events: none;
+
+    width: 280px;
+
+    height: 280px;
+
+    right: -160px;
+
+    top: 110px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(31,165,138,.07),
+            transparent 70%
+        );
+
+    z-index: 0;
+
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE DECORATION
+========================================================= */
+
+.admin-content,
+.admin-topbar,
+.admin-footer {
+
+    position: relative;
+
+    z-index: 1;
+
+}

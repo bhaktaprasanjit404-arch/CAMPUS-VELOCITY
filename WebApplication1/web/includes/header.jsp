@@ -1,140 +1,151 @@
-<%-- 
-    Document   : header
-    Created on : 9 Sept 2026, 5:46:13 pm
-    Author     : User
---%>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-
-<!-- ================= HEADER ================= -->
-
-<header class="main-header" id="mainHeader">
-
-    <div class="header-container">
-
-        <!-- LOGO -->
-        <a href="index.jsp" class="logo">
-
-            <div class="logo-icon">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-
-            <div class="logo-text">
-                <span class="logo-title">CAPACITY</span>
-                <span class="logo-subtitle">CONNECT</span>
-            </div>
-
-        </a>
-
-
-        <!-- MOBILE MENU BUTTON -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-
-
-        <!-- NAVIGATION -->
-        <nav class="main-nav" id="mainNav">
-
-            <a href="index.jsp" class="nav-link active">
-                Home
-            </a>
-
-            <a href="about.jsp" class="nav-link">
-                About
-            </a>
-
-            <a href="courses.jsp" class="nav-link">
-                Courses
-            </a>
-
-            <a href="resources.jsp" class="nav-link">
+<%--  
+    Document   : header 
+    Created on : 9 Sept 2026, 5:46:13 pm 
+    Author     : User 
+--%> 
+ 
+<!-- ===================================================== 
+     CAPACITY CONNECT ? PREMIUM HEADER 
+     ===================================================== --> 
+ 
+<header class="main-header"> 
+ 
+    <div class="header-container"> 
+ 
+        <!-- LOGO --> 
+        <a href="index.jsp" class="logo"> 
+ 
+            <span class="logo-icon"> 
+                <i class="fa-solid fa-layer-group"></i> 
+            </span> 
+ 
+            <span class="logo-text"> 
+                <span class="logo-main">CAPACITY</span> 
+                <span class="logo-sub">CONNECT</span> 
+            </span> 
+ 
+        </a> 
+ 
+ 
+        <!-- DESKTOP NAVIGATION --> 
+        <nav class="main-nav" id="mainNav"> 
+ 
+            <a href="index.jsp" class="nav-link"> 
+                Home 
+            </a> 
+ 
+            <a href="courses.jsp" class="nav-link"> 
+                Courses 
+            </a> 
+ 
+            <a href="about.jsp" class="nav-link"> 
+                About 
+            </a> 
+ 
+            <a href="ResourceServlet" class="nav-link">
                 Resources
             </a>
-
-            <a href="events.jsp" class="nav-link">
-                Events
-            </a>
-
-            <a href="news.jsp" class="nav-link">
-                News & Updates
-            </a>
-
-            <a href="contact.jsp" class="nav-link">
-                Contact
-            </a>
-
-        </nav>
-
-
-        <!-- HEADER ACTIONS -->
-        <div class="header-actions">
-
-            <!-- SEARCH -->
-            <button class="search-btn" id="searchBtn">
-                <i class="fas fa-search"></i>
-            </button>
-
-
-            <!-- LOGIN -->
-            <a href="${pageContext.request.contextPath}/login.jsp" class="login-btn">
-                <i class="fas fa-user"></i>
-                Login
-            </a>
-
-
-            <!-- REGISTER -->
-            <a href="${pageContext.request.contextPath}/register.jsp" class="signup-btn">
-                Get Started
-                <i class="fas fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-    </div>
-
+ 
+            <a href="events.jsp" class="nav-link"> 
+                Events 
+            </a> 
+ 
+            <a href="contact.jsp" class="nav-link"> 
+                Contact 
+            </a> 
+ 
+        </nav> 
+ 
+ 
+        <!-- RIGHT SIDE --> 
+        <div class="header-actions"> 
+ 
+            <!-- SEARCH --> 
+            <button class="header-icon-btn" 
+                    id="searchBtn" 
+                    aria-label="Search"> 
+ 
+                <i class="fa-solid fa-magnifying-glass"></i> 
+ 
+            </button> 
+ 
+ 
+            <!-- LOGIN --> 
+            <!-- Existing class name kept exactly same --> 
+            <a href="login.jsp" 
+               class="header-login" 
+               data-auth-open="login"> 
+ 
+                <i class="fa-regular fa-user"></i> 
+ 
+                <span>Login</span> 
+ 
+            </a> 
+ 
+ 
+            <!-- JOIN BUTTON --> 
+            <!-- Existing class name kept exactly same --> 
+            <a href="register.jsp" 
+               class="header-join" 
+               data-auth-open="register"> 
+ 
+                <span>Join Now</span> 
+ 
+                <i class="fa-solid fa-arrow-right"></i> 
+ 
+            </a> 
+ 
+ 
+            <!-- MOBILE MENU --> 
+            <button class="mobile-menu-btn" 
+                    id="mobileMenuBtn" 
+                    aria-label="Open Menu"> 
+ 
+                <span></span> 
+                <span></span> 
+                <span></span> 
+ 
+            </button> 
+ 
+        </div> 
+ 
+    </div> 
+ 
+ 
+    <!-- SEARCH OVERLAY --> 
+    <div class="header-search" id="headerSearch"> 
+ 
+        <div class="search-inner"> 
+ 
+            <i class="fa-solid fa-magnifying-glass"></i> 
+ 
+            <input 
+                type="text" 
+                id="headerSearchInput" 
+                placeholder="Search courses, skills, resources..." 
+                autocomplete="off" 
+            /> 
+ 
+            <button id="closeSearch" aria-label="Close Search"> 
+                <i class="fa-solid fa-xmark"></i> 
+            </button> 
+ 
+        </div> 
+ 
+    </div> 
+ 
 </header>
 
 
-<!-- ================= SEARCH OVERLAY ================= -->
+<!-- =====================================================
+     AUTH MODAL
+     
+     This loads the transparent Login/Register popup.
+     
+     Existing header classes are NOT changed.
+     ===================================================== -->
 
-<div class="search-overlay" id="searchOverlay">
+<%@ include file="auth-modal.jsp" %>
 
-    <div class="search-container">
-
-        <button class="close-search" id="closeSearch">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <div class="search-content">
-
-            <span class="search-label">
-                SEARCH CAPACITY CONNECT
-            </span>
-
-            <h2>
-                What are you looking for?
-            </h2>
-
-            <div class="search-box">
-
-                <i class="fas fa-search"></i>
-
-                <input
-                    type="text"
-                    id="globalSearch"
-                    placeholder="Search courses, resources, events..."
-                >
-
-                <button id="searchSubmit">
-                    Search
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/css/auth-modal.css">
+<script src="<%= request.getContextPath() %>/js/auth-modal.js"></script>

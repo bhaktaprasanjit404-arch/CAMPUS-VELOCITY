@@ -2570,5 +2570,2253 @@ input, select, textarea {
     }
 }
 
+/* ================================================================
+   CAPACITY CONNECT
+   STUDENT DASHBOARD — PREMIUM BRAND OVERRIDE
 
+   BRAND SYSTEM
+   Strawberry Red + White + Sea Green + Minimal Black
+
+   IMPORTANT:
+   Existing HTML structure and class names are NOT changed.
+================================================================ */
+
+
+/* ================================================================
+   01. BRAND VARIABLES
+================================================================ */
+
+:root {
+
+    /* PRIMARY BRAND */
+    --primary: #e83f5b;
+    --primary-hover: #c92d48;
+    --primary-dark: #a9213a;
+
+    --primary-light: #fff1f3;
+    --primary-glow: rgba(232, 63, 91, 0.20);
+
+    --primary-gradient:
+        linear-gradient(
+            135deg,
+            #e83f5b 0%,
+            #c92d48 100%
+        );
+
+
+    /* SEA GREEN */
+    --accent-green: #1fa58a;
+    --accent-green-dark: #137966;
+    --accent-green-light: #eaf8f4;
+
+
+    /* STATUS */
+    --success: #1fa58a;
+    --success-light: #eaf8f4;
+    --success-border: #b7e5da;
+
+    --warning: #e83f5b;
+    --warning-light: #fff1f3;
+    --warning-border: #f4bcc7;
+
+    --danger: #c92d48;
+    --danger-light: #fff1f3;
+    --danger-border: #f4bcc7;
+
+    --info: #1fa58a;
+    --info-light: #eaf8f4;
+
+
+    /* MAIN BACKGROUNDS */
+    --sidebar-bg: #ffffff;
+    --sidebar-bg-deep: #f8f8f7;
+
+    --sidebar-nav-hover: rgba(232, 63, 91, 0.06);
+
+    --sidebar-nav-active:
+        rgba(232, 63, 91, 0.09);
+
+    --sidebar-border: #e8e8e8;
+
+
+    /* PAGE */
+    --bg-page: #f6f6f4;
+
+    --card-bg: #ffffff;
+
+    --card-border: #e6e6e6;
+
+    --card-hover-border:
+        rgba(232, 63, 91, 0.30);
+
+
+    /* TEXT */
+    --text-heading: #080808;
+
+    --text-body: #3f3f3f;
+
+    --text-muted: #777777;
+
+    --text-dim: #a0a0a0;
+
+    --text-white: #ffffff;
+
+
+    /* SHADOWS */
+    --shadow-xs:
+        0 1px 3px rgba(0,0,0,.035);
+
+    --shadow-sm:
+        0 6px 20px rgba(0,0,0,.045);
+
+    --shadow-md:
+        0 14px 35px rgba(0,0,0,.075);
+
+    --shadow-lg:
+        0 25px 60px rgba(0,0,0,.11);
+
+    --shadow-glow:
+        0 0 30px rgba(232,63,91,.16);
+
+
+    /* KEEP EXISTING RADII */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 26px;
+    --radius-full: 9999px;
+
+    --transition:
+        all .25s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* ================================================================
+   02. BODY
+================================================================ */
+
+body {
+
+    background:
+        #f6f6f4;
+
+    color:
+        #3f3f3f;
+
+}
+
+
+/* ================================================================
+   03. STUDENT SIDEBAR
+
+   White premium sidebar instead of dark navy.
+================================================================ */
+
+.student-sidebar {
+
+    background:
+
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(232,63,91,.07),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 100% 90%,
+            rgba(31,165,138,.07),
+            transparent 30%
+        ),
+
+        #ffffff;
+
+    color: #080808;
+
+    border-right:
+        1px solid #e8e8e8;
+
+    box-shadow:
+        8px 0 35px rgba(0,0,0,.035);
+
+}
+
+
+/* ================================================================
+   04. STUDENT BRAND
+================================================================ */
+
+.student-brand {
+
+    border-bottom:
+        1px solid #e8e8e8;
+
+}
+
+
+.student-brand-icon {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83f5b,
+            #c92d48
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 10px 25px rgba(232,63,91,.22);
+
+}
+
+
+.student-brand-text strong {
+
+    color: #080808;
+
+}
+
+
+.student-brand-text span {
+
+    color: #999999;
+
+}
+
+
+/* ================================================================
+   05. SIDEBAR NAVIGATION LABEL
+================================================================ */
+
+.student-nav-group-label {
+
+    color:
+        #a2a2a2;
+
+}
+
+
+/* ================================================================
+   06. SIDEBAR NAVIGATION
+================================================================ */
+
+.student-nav-link {
+
+    color:
+        #777777;
+
+}
+
+
+.student-nav-link i {
+
+    color:
+        #a0a0a0;
+
+}
+
+
+.student-nav-link:hover {
+
+    color:
+        #080808;
+
+    background:
+        rgba(232,63,91,.06);
+
+    transform:
+        translateX(4px);
+
+}
+
+
+.student-nav-link:hover i {
+
+    color:
+        #e83f5b;
+
+}
+
+
+/* ACTIVE NAVIGATION */
+
+.student-nav-link.active {
+
+    color:
+        #080808;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(232,63,91,.10),
+            rgba(31,165,138,.05)
+        );
+
+    border:
+        1px solid rgba(232,63,91,.16);
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.04);
+
+}
+
+
+.student-nav-link.active i {
+
+    color:
+        #e83f5b;
+
+}
+
+
+.student-nav-link.active::after {
+
+    background:
+        #e83f5b;
+
+    box-shadow:
+        0 0 10px rgba(232,63,91,.40);
+
+}
+
+
+/* NAV BADGE */
+
+.student-nav-badge {
+
+    background:
+        rgba(232,63,91,.09);
+
+    color:
+        #c92d48;
+
+}
+
+
+/* ================================================================
+   07. SIDEBAR USER CARD
+================================================================ */
+
+.sidebar-footer {
+
+    border-top:
+        1px solid #e8e8e8;
+
+}
+
+
+.sidebar-user-card {
+
+    background:
+        #fafafa;
+
+    border:
+        1px solid #e7e7e7;
+
+}
+
+
+.user-avatar-badge {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1fa58a,
+            #137966
+        );
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(31,165,138,.20);
+
+}
+
+
+.user-meta strong {
+
+    color:
+        #080808;
+
+}
+
+
+.user-meta span {
+
+    color:
+        #999999;
+
+}
+
+
+/* LOGOUT */
+
+.sidebar-logout-btn {
+
+    background:
+        rgba(232,63,91,.06);
+
+    border:
+        1px solid rgba(232,63,91,.15);
+
+    color:
+        #c92d48;
+
+}
+
+
+.sidebar-logout-btn:hover {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+    border-color:
+        #e83f5b;
+
+    box-shadow:
+        0 10px 22px rgba(232,63,91,.18);
+
+}
+
+
+/* ================================================================
+   08. MAIN CONTENT
+================================================================ */
+
+.student-main {
+
+    background:
+        #f6f6f4;
+
+}
+
+
+/* ================================================================
+   09. TOPBAR
+================================================================ */
+
+.student-topbar {
+
+    background:
+        rgba(255,255,255,.92);
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.045);
+
+}
+
+
+/* MOBILE BUTTON */
+
+.mobile-toggle-btn {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e2e2e2;
+
+    color:
+        #080808;
+
+}
+
+
+.mobile-toggle-btn:hover {
+
+    color:
+        #e83f5b;
+
+    border-color:
+        rgba(232,63,91,.30);
+
+}
+
+
+/* BREADCRUMB */
+
+.breadcrumb-label {
+
+    color:
+        #e83f5b;
+
+}
+
+
+.breadcrumb-title {
+
+    color:
+        #080808;
+
+}
+
+
+/* ================================================================
+   10. SEARCH
+================================================================ */
+
+.topbar-search i {
+
+    color:
+        #999999;
+
+}
+
+
+.topbar-search input {
+
+    background:
+        #f7f7f5;
+
+    border:
+        1px solid #e5e5e5;
+
+    color:
+        #080808;
+
+}
+
+
+.topbar-search input:focus {
+
+    background:
+        #ffffff;
+
+    border-color:
+        #e83f5b;
+
+    box-shadow:
+        0 0 0 3px rgba(232,63,91,.08);
+
+}
+
+
+/* ================================================================
+   11. TOPBAR ACTIONS
+================================================================ */
+
+.topbar-action-btn {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e4e4e4;
+
+    color:
+        #777777;
+
+}
+
+
+.topbar-action-btn:hover {
+
+    color:
+        #e83f5b;
+
+    background:
+        #fff5f6;
+
+    border-color:
+        rgba(232,63,91,.30);
+
+}
+
+
+.notification-dot {
+
+    background:
+        #e83f5b;
+
+}
+
+
+/* ================================================================
+   12. EXPLORE COURSES BUTTON
+================================================================ */
+
+.explore-courses-btn {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e83f5b,
+            #c92d48
+        );
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(232,63,91,.20);
+
+}
+
+
+.explore-courses-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #c92d48,
+            #e83f5b
+        );
+
+    box-shadow:
+        0 12px 28px rgba(232,63,91,.27);
+
+}
+
+
+/* ================================================================
+   13. PROFILE PILL
+================================================================ */
+
+.topbar-profile-pill {
+
+    background:
+        #f7f7f5;
+
+    border:
+        1px solid #e5e5e5;
+
+}
+
+
+.profile-pill-avatar {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1fa58a,
+            #137966
+        );
+
+}
+
+
+.profile-pill-info strong {
+
+    color:
+        #080808;
+
+}
+
+
+.profile-pill-info span {
+
+    color:
+        #999999;
+
+}
+
+
+/* ================================================================
+   14. PREMIUM HERO
+
+   Black is used only here as a highlight.
+================================================================ */
+
+.student-hero {
+
+    background:
+
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(232,63,91,.30),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(31,165,138,.20),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            #080808 0%,
+            #151515 58%,
+            #101010 100%
+        );
+
+    color:
+        #ffffff;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.12);
+
+}
+
+
+/* HERO GRID */
+
+.hero-backdrop-pattern {
+
+    opacity:
+        .06;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.25) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.25) 1px,
+            transparent 1px
+        );
+
+}
+
+
+/* HERO TAG */
+
+.hero-tag {
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    color:
+        #1fa58a;
+
+}
+
+
+.hero-tag i {
+
+    color:
+        #1fa58a;
+
+}
+
+
+/* HERO TITLE */
+
+.student-hero h1 {
+
+    color:
+        #ffffff;
+
+}
+
+
+.student-hero h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #e83f5b 70%
+        );
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+}
+
+
+.student-hero p {
+
+    color:
+        #cfcfcf;
+
+}
+
+
+/* ================================================================
+   15. HERO BUTTONS
+================================================================ */
+
+.btn-hero-primary {
+
+    background:
+        #ffffff;
+
+    color:
+        #080808;
+
+}
+
+
+.btn-hero-primary:hover {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+}
+
+
+.btn-hero-outline {
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:
+        #ffffff;
+
+    border:
+        1px solid rgba(255,255,255,.20);
+
+}
+
+
+.btn-hero-outline:hover {
+
+    background:
+        #1fa58a;
+
+    border-color:
+        #1fa58a;
+
+}
+
+
+/* ================================================================
+   16. HERO STAT PILLS
+================================================================ */
+
+.hero-stat-pill {
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid rgba(255,255,255,.13);
+
+}
+
+
+.hero-stat-pill:hover {
+
+    background:
+        rgba(255,255,255,.11);
+
+}
+
+
+.pill-icon.blue {
+
+    background:
+        rgba(232,63,91,.18);
+
+    color:
+        #ff9bac;
+
+}
+
+
+.pill-icon.green {
+
+    background:
+        rgba(31,165,138,.18);
+
+    color:
+        #76d8c4;
+
+}
+
+
+.pill-icon.purple {
+
+    background:
+        rgba(255,255,255,.10);
+
+    color:
+        #ffffff;
+
+}
+
+
+.pill-info span {
+
+    color:
+        #999999;
+
+}
+
+
+.pill-info strong {
+
+    color:
+        #ffffff;
+
+}
+
+
+/* ================================================================
+   17. KPI STAT CARDS
+================================================================ */
+
+.stat-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.04);
+
+}
+
+
+.stat-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(232,63,91,.28);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* CARD TOP ACCENTS */
+
+.stat-card.blue::before {
+
+    background:
+        #e83f5b;
+
+}
+
+
+.stat-card.green::before {
+
+    background:
+        #1fa58a;
+
+}
+
+
+.stat-card.amber::before {
+
+    background:
+        #e83f5b;
+
+}
+
+
+.stat-card.purple::before {
+
+    background:
+        #080808;
+
+}
+
+
+/* ICONS */
+
+.stat-icon-badge.blue {
+
+    background:
+        #fff1f3;
+
+    color:
+        #e83f5b;
+
+}
+
+
+.stat-icon-badge.green {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #1fa58a;
+
+}
+
+
+.stat-icon-badge.amber {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+}
+
+
+.stat-icon-badge.purple {
+
+    background:
+        #f3f3f3;
+
+    color:
+        #080808;
+
+}
+
+
+.stat-label {
+
+    color:
+        #888888;
+
+}
+
+
+.stat-value {
+
+    color:
+        #080808;
+
+}
+
+
+.stat-meta {
+
+    color:
+        #888888;
+
+}
+
+
+/* PROGRESS */
+
+.stat-progress-bar {
+
+    background:
+        #eeeeee;
+
+}
+
+
+.stat-progress-fill.blue {
+
+    background:
+        #e83f5b;
+
+}
+
+
+.stat-progress-fill.green {
+
+    background:
+        #1fa58a;
+
+}
+
+
+.stat-progress-fill.amber {
+
+    background:
+        #e83f5b;
+
+}
+
+
+.stat-progress-fill.purple {
+
+    background:
+        #080808;
+
+}
+
+
+/* ================================================================
+   18. DASHBOARD TABS
+================================================================ */
+
+.dashboard-tabs-bar {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+}
+
+
+.tab-btn {
+
+    color:
+        #777777;
+
+}
+
+
+.tab-btn:hover {
+
+    color:
+        #080808;
+
+    background:
+        #f7f7f5;
+
+}
+
+
+.tab-btn.active {
+
+    color:
+        #e83f5b;
+
+    background:
+        #fff1f3;
+
+}
+
+
+/* ================================================================
+   19. SECTION HEADINGS
+================================================================ */
+
+.section-title-group h2 {
+
+    color:
+        #080808;
+
+}
+
+
+.section-title-group p {
+
+    color:
+        #777777;
+
+}
+
+
+.section-action-link {
+
+    color:
+        #e83f5b;
+
+}
+
+
+.section-action-link:hover {
+
+    color:
+        #137966;
+
+}
+
+
+/* ================================================================
+   20. COURSE CARDS
+================================================================ */
+
+.course-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.04);
+
+}
+
+
+.course-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(232,63,91,.30);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.09);
+
+}
+
+
+/* COURSE IMAGE */
+
+.course-card-thumb {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #080808,
+            #222222
+        );
+
+}
+
+
+/* COURSE BADGES */
+
+.badge-category {
+
+    background:
+        #080808;
+
+    color:
+        #ffffff;
+
+}
+
+
+.badge-category::first-letter {
+
+    color:
+        #e83f5b;
+
+}
+
+
+.badge-level {
+
+    background:
+        rgba(255,255,255,.94);
+
+    color:
+        #080808;
+
+}
+
+
+/* COURSE TEXT */
+
+.course-card-body h3 {
+
+    color:
+        #080808;
+
+}
+
+
+.course-card-body p {
+
+    color:
+        #777777;
+
+}
+
+
+/* INSTRUCTOR */
+
+.instructor-avatar {
+
+    background:
+        #f7f7f5;
+
+    border:
+        1px solid #e4e4e4;
+
+    color:
+        #e83f5b;
+
+}
+
+
+.instructor-details strong {
+
+    color:
+        #080808;
+
+}
+
+
+.instructor-details span {
+
+    color:
+        #999999;
+
+}
+
+
+/* COURSE PROGRESS */
+
+.course-progress-block {
+
+    border-top:
+        1px solid #eeeeee;
+
+}
+
+
+.progress-info span {
+
+    color:
+        #888888;
+
+}
+
+
+.progress-info strong {
+
+    color:
+        #080808;
+
+}
+
+
+/* COURSE FOOTER */
+
+.course-card-footer {
+
+    background:
+        #fafafa;
+
+    border-top:
+        1px solid #e8e8e8;
+
+}
+
+
+/* PRIMARY COURSE BUTTON */
+
+.btn-card-primary {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+}
+
+
+.btn-card-primary:hover {
+
+    background:
+        #c92d48;
+
+    box-shadow:
+        0 8px 18px rgba(232,63,91,.20);
+
+}
+
+
+/* SECONDARY COURSE BUTTON */
+
+.btn-card-secondary {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #dddddd;
+
+    color:
+        #555555;
+
+}
+
+
+.btn-card-secondary:hover {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+    border-color:
+        #1fa58a;
+
+}
+
+
+/* ================================================================
+   21. PANEL CARDS
+================================================================ */
+
+.panel-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.035);
+
+}
+
+
+.panel-card-header {
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+.panel-card-header h3 {
+
+    color:
+        #080808;
+
+}
+
+
+.panel-card-header h3 i {
+
+    color:
+        #e83f5b;
+
+}
+
+
+.panel-card-body {
+
+    background:
+        #ffffff;
+
+}
+
+
+/* ================================================================
+   22. ASSIGNMENTS
+================================================================ */
+
+.assignment-item {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+}
+
+
+.assignment-item:hover {
+
+    border-color:
+        rgba(232,63,91,.30);
+
+    background:
+        #fffafa;
+
+    transform:
+        translateX(4px);
+
+}
+
+
+.assignment-icon {
+
+    background:
+        #f5f5f5;
+
+    color:
+        #666666;
+
+}
+
+
+.assignment-icon.graded {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+}
+
+
+.assignment-icon.pending {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+}
+
+
+.assignment-icon.submitted {
+
+    background:
+        #fff1f3;
+
+    color:
+        #e83f5b;
+
+}
+
+
+.assignment-icon.overdue {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+}
+
+
+.assignment-info strong {
+
+    color:
+        #080808;
+
+}
+
+
+.assignment-subtext {
+
+    color:
+        #888888;
+
+}
+
+
+/* ================================================================
+   23. STATUS PILLS
+================================================================ */
+
+.status-pill.graded {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+    border:
+        1px solid #b7e5da;
+
+}
+
+
+.status-pill.submitted {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+    border:
+        1px solid #f4bcc7;
+
+}
+
+
+.status-pill.pending {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+    border:
+        1px solid #f4bcc7;
+
+}
+
+
+.status-pill.overdue {
+
+    background:
+        #fff1f3;
+
+    color:
+        #a9213a;
+
+    border:
+        1px solid #f4bcc7;
+
+}
+
+
+/* SUBMIT */
+
+.btn-submit-action {
+
+    background:
+        #fff1f3;
+
+    color:
+        #e83f5b;
+
+    border:
+        1px solid rgba(232,63,91,.20);
+
+}
+
+
+.btn-submit-action:hover {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* ================================================================
+   24. ATTENDANCE
+================================================================ */
+
+.attendance-summary-box {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7faf9
+        );
+
+    border:
+        1px solid #e4e7e6;
+
+}
+
+
+.attendance-meter-circle {
+
+    background:
+        conic-gradient(
+            #1fa58a
+            calc(var(--att-percent,80) * 1%),
+            #e8eeee 0
+        );
+
+}
+
+
+.attendance-meter-number {
+
+    color:
+        #080808;
+
+}
+
+
+.attendance-meta-row span {
+
+    color:
+        #888888;
+
+}
+
+
+.attendance-meta-row strong {
+
+    color:
+        #080808;
+
+}
+
+
+.attendance-table th {
+
+    color:
+        #888888;
+
+    border-bottom:
+        1px solid #e5e5e5;
+
+}
+
+
+.attendance-table td {
+
+    color:
+        #555555;
+
+    border-bottom:
+        1px solid #eeeeee;
+
+}
+
+
+.attendance-table tr:hover td {
+
+    background:
+        #fafafa;
+
+}
+
+
+.status-badge-att.present {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+}
+
+
+.status-badge-att.absent {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+}
+
+
+.status-badge-att.late {
+
+    background:
+        #fff1f3;
+
+    color:
+        #c92d48;
+
+}
+
+
+/* ================================================================
+   25. RESOURCES
+================================================================ */
+
+.resource-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+}
+
+
+.resource-card:hover {
+
+    border-color:
+        rgba(31,165,138,.35);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.07);
+
+}
+
+
+.resource-icon.pdf {
+
+    background:
+        #fff1f3;
+
+    color:
+        #e83f5b;
+
+}
+
+
+.resource-icon.video {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #1fa58a;
+
+}
+
+
+.resource-icon.doc {
+
+    background:
+        #f5f5f5;
+
+    color:
+        #080808;
+
+}
+
+
+.resource-icon.code {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+}
+
+
+.resource-info strong {
+
+    color:
+        #080808;
+
+}
+
+
+.resource-info span {
+
+    color:
+        #999999;
+
+}
+
+
+.resource-download-btn {
+
+    background:
+        #f6f6f4;
+
+    color:
+        #777777;
+
+}
+
+
+.resource-download-btn:hover {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* ================================================================
+   26. CERTIFICATE CARDS
+================================================================ */
+
+.cert-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e5e5e5;
+
+}
+
+
+.cert-card:hover {
+
+    border-color:
+        rgba(31,165,138,.35);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* Certificate top line */
+
+.cert-card::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            #e83f5b,
+            #1fa58a
+        );
+
+}
+
+
+.cert-badge-icon {
+
+    background:
+        #eaf8f4;
+
+    color:
+        #137966;
+
+    box-shadow:
+        0 5px 14px rgba(31,165,138,.12);
+
+}
+
+
+.cert-id-tag {
+
+    background:
+        #f6f6f4;
+
+    color:
+        #888888;
+
+}
+
+
+.cert-card h4 {
+
+    color:
+        #080808;
+
+}
+
+
+.cert-date {
+
+    color:
+        #999999;
+
+}
+
+
+.btn-view-cert {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #dddddd;
+
+    color:
+        #080808;
+
+}
+
+
+.btn-view-cert:hover {
+
+    background:
+        #1fa58a;
+
+    color:
+        #ffffff;
+
+    border-color:
+        #1fa58a;
+
+}
+
+
+/* ================================================================
+   27. EMPTY STATE
+================================================================ */
+
+.empty-state-card {
+
+    background:
+        #ffffff;
+
+    border:
+        1px dashed #d9d9d9;
+
+}
+
+
+.empty-state-icon {
+
+    background:
+        #fff1f3;
+
+    color:
+        #e83f5b;
+
+}
+
+
+.empty-state-card h4 {
+
+    color:
+        #080808;
+
+}
+
+
+.empty-state-card p {
+
+    color:
+        #888888;
+
+}
+
+
+/* ================================================================
+   28. AI SECTION — PREMIUM BRAND VERSION
+
+   Removes purple/cyan futuristic look and uses
+   black + strawberry + sea green.
+================================================================ */
+
+.ai-banner-card {
+
+    background:
+
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(232,63,91,.28),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(31,165,138,.20),
+            transparent 38%
+        ),
+
+        #080808;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.12);
+
+}
+
+
+.ai-pill-tag {
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.14);
+
+    color:
+        #1fa58a;
+
+}
+
+
+.ai-banner-card h2,
+.ai-banner-card h3 {
+
+    color:
+        #ffffff;
+
+}
+
+
+.ai-banner-card p {
+
+    color:
+        #bdbdbd;
+
+}
+
+
+/* AI icons */
+
+.ai-banner-card i {
+
+    color:
+        #e83f5b;
+
+}
+
+
+/* ================================================================
+   29. GENERAL PREMIUM CARD EFFECT
+================================================================ */
+
+.course-card,
+.panel-card,
+.stat-card,
+.resource-card,
+.cert-card,
+.dashboard-tabs-bar,
+.assignment-item {
+
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease;
+
+}
+
+
+/* ================================================================
+   30. GLOBAL SELECTION
+================================================================ */
+
+::selection {
+
+    background:
+        #e83f5b;
+
+    color:
+        #ffffff;
+
+}
+
+
+/* ================================================================
+   31. SCROLLBAR
+================================================================ */
+
+.student-sidebar::-webkit-scrollbar {
+
+    width:
+        5px;
+
+}
+
+
+.student-sidebar::-webkit-scrollbar-track {
+
+    background:
+        transparent;
+
+}
+
+
+.student-sidebar::-webkit-scrollbar-thumb {
+
+    background:
+        #dddddd;
+
+    border-radius:
+        20px;
+
+}
+
+
+.student-sidebar::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #e83f5b;
+
+}
+
+
+/* ================================================================
+   32. MOBILE BACKDROP
+================================================================ */
+
+.sidebar-backdrop {
+
+    background:
+        rgba(0,0,0,.28);
+
+    backdrop-filter:
+        blur(5px);
+
+}
+
+
+/* ================================================================
+   33. MOBILE RESPONSIVE BRAND COLORS
+================================================================ */
+
+@media (max-width: 992px) {
+
+    .student-sidebar {
+
+        box-shadow:
+            12px 0 40px rgba(0,0,0,.10);
+
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .student-hero {
+
+        background:
+
+            radial-gradient(
+                circle at 90% 10%,
+                rgba(232,63,91,.25),
+                transparent 45%
+            ),
+
+            radial-gradient(
+                circle at 10% 90%,
+                rgba(31,165,138,.18),
+                transparent 45%
+            ),
+
+            #080808;
+
+    }
+
+}
+
+
+/* ================================================================
+   34. FINAL PREMIUM BRAND DETAIL
+================================================================ */
+
+.student-main::after {
+
+    content:
+        "";
+
+    position:
+        fixed;
+
+    width:
+        300px;
+
+    height:
+        300px;
+
+    right:
+        -180px;
+
+    bottom:
+        -150px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(31,165,138,.07),
+            transparent 70%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+
+}
+
+
+/* Keep actual dashboard content above decoration */
+
+.student-main > * {
+
+    position:
+        relative;
+
+    z-index:
+        1;
+
+}
 

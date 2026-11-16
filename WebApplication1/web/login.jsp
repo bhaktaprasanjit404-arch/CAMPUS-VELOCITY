@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,76 +12,82 @@
 
     <title>Login | Capacity Connect</title>
 
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+
+    <!-- FONT AWESOME -->
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- CAPACITY CONNECT LOGIN CSS -->
 
     <link rel="stylesheet"
           href="css/auth.css">
 
 </head>
 
+
 <body>
 
-<div class="auth-page">
 
-    <div class="background-shape shape-one"></div>
-    <div class="background-shape shape-two"></div>
-    <div class="background-shape shape-three"></div>
+<!-- =========================================================
+     MAIN LOGIN SCREEN
+     ========================================================= -->
 
-    <div class="auth-container">
+<div class="auth-screen">
 
-        <!-- LEFT SIDE -->
 
-        <div class="auth-showcase">
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
 
-            <div class="brand">
+    <div class="auth-background"></div>
 
-                <div class="brand-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
+    <div class="background-overlay"></div>
 
-                <div>
-                    <h2>CAPACITY</h2>
-                    <span>CONNECT</span>
-                </div>
+    <div class="background-grid"></div>
+
+
+
+    <!-- =====================================================
+         LEFT BRAND / HERO
+         ===================================================== -->
+
+    <div class="auth-brand">
+
+
+        <!-- BRAND TOP -->
+
+        <div class="brand-top">
+
+            <div class="brand-mark">
+
+                <i class="fa-solid fa-layer-group"></i>
 
             </div>
 
-            <div class="showcase-content">
 
-                <span class="mini-label">
-                    <i class="fa-solid fa-bolt"></i>
-                    WELCOME BACK
-                </span>
+            <div>
 
-                <h1>
-                    Learn.
-                    <span>Grow.</span>
-                    Connect.
-                </h1>
+                <div class="brand-name">
+                    CAPACITY CONNECT
+                </div>
 
-                <p>
-                    Sign in to continue your learning journey
-                    with Capacity Connect.
-                </p>
-
-                <div class="login-highlights">
-
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Smart learning experience
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Expert-led courses
-                    </div>
-
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        Track your progress
-                    </div>
-
+                <div class="brand-subname">
+                    DIGITAL LEARNING
                 </div>
 
             </div>
@@ -89,327 +95,757 @@
         </div>
 
 
-        <!-- RIGHT SIDE -->
 
-        <div class="auth-form-area">
+        <!-- BRAND CONTENT -->
 
-            <div class="form-header">
+        <div class="brand-content">
 
-                <span class="welcome">
-                    SIGN IN
+
+            <div class="brand-tag">
+
+                <span>
+                    <i class="fa-solid fa-circle"></i>
                 </span>
 
-                <h2>Welcome back</h2>
-
-                <p>
-                    Choose your account type to continue.
-                </p>
+                DIGITAL CAPACITY BUILDING PLATFORM
 
             </div>
 
 
-            <!-- ERROR -->
+            <h1>
 
-            <% if (request.getAttribute("error") != null) { %>
+                Learn.
+                <br>
 
-                <div class="message error-message">
+                Grow.
+
+                <br>
+
+                <span>Connect.</span>
+
+            </h1>
+
+
+            <p>
+
+                Build meaningful skills, share knowledge,
+                and unlock new opportunities through
+                Capacity Connect.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- BRAND BOTTOM -->
+
+        <div class="brand-bottom">
+
+            <span>
+                © Capacity Connect
+            </span>
+
+            <span>
+                Learn • Develop • Grow
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RIGHT LOGIN PANEL
+         ===================================================== -->
+
+    <div class="auth-panel">
+
+
+        <div class="auth-panel-inner">
+
+
+            <!-- MOBILE BRAND -->
+
+            <div class="mobile-brand">
+
+                <span>CAPACITY</span> CONNECT
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOGIN HEADING
+                 ================================================= -->
+
+            <div class="auth-heading">
+
+
+                <span class="small-heading">
+                    WELCOME BACK
+                </span>
+
+
+                <h2>
+
+                    Sign in.
+
+                </h2>
+
+
+                <p>
+
+                    Choose your account type to continue.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ERROR MESSAGE
+                 ================================================= -->
+
+            <%
+
+                String error =
+                        (String) request.getAttribute("error");
+
+                if (error != null) {
+
+            %>
+
+                <div class="auth-error">
 
                     <i class="fa-solid fa-circle-exclamation"></i>
 
                     <span>
-                        <%= request.getAttribute("error") %>
+                        <%= error %>
                     </span>
 
                 </div>
 
-            <% } %>
+            <%
+
+                }
+
+            %>
 
 
-            <!-- ROLE SELECTOR -->
 
-            <div class="role-selector login-role-selector">
+            <!-- =================================================
+                 ROLE SELECTOR
+                 ================================================= -->
 
-                <button type="button"
-                        class="role-card active"
-                        data-login-role="STUDENT">
+            <div class="auth-role-tabs">
+
+
+                <!-- USER -->
+
+                <label class="role-tab active">
+
+                    <input type="radio"
+                           name="loginRole"
+                           value="USER"
+                           checked
+                           hidden>
 
                     <i class="fa-solid fa-user-graduate"></i>
 
-                    <span>Student</span>
+                    <span>
+                        User
+                    </span>
 
-                </button>
+                </label>
 
 
-                <button type="button"
-                        class="role-card"
-                        data-login-role="TEACHER">
+
+                <!-- TEACHER -->
+
+                <label class="role-tab">
+
+                    <input type="radio"
+                           name="loginRole"
+                           value="TEACHER"
+                           hidden>
 
                     <i class="fa-solid fa-chalkboard-user"></i>
 
-                    <span>Teacher</span>
+                    <span>
+                        Teacher
+                    </span>
 
-                </button>
+                </label>
 
 
-                <button type="button"
-                        class="role-card"
-                        data-login-role="ADMIN">
 
-                    <i class="fa-solid fa-shield-halved"></i>
+                <!-- ADMIN -->
 
-                    <span>Admin</span>
+                <label class="role-tab">
 
-                </button>
+                    <input type="radio"
+                           name="loginRole"
+                           value="ADMIN"
+                           hidden>
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <span>
+                        Admin
+                    </span>
+
+                </label>
+
 
             </div>
 
 
-            <form action="${pageContext.request.contextPath}/LoginServlet"
-                  method="post"
-                  id="loginForm">
 
+            <!-- =================================================
+                 USER LOGIN FORM
+                 ================================================= -->
+
+            <form action="LoginServlet"
+                  method="post"
+                  id="studentForm"
+                  class="role-form active">
+
+
+                <!-- IMPORTANT:
+                     LoginServlet expects role = USER -->
 
                 <input type="hidden"
                        name="role"
-                       id="loginRole"
-                       value="STUDENT">
+                       value="USER">
 
 
-                <!-- STUDENT LOGIN -->
+                <div class="field">
 
-                <div id="studentLoginFields"
-                     class="login-fields">
-
-                    <div class="input-group">
-
-                        <label>Student ID</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-id-card"></i>
-
-                            <input type="number"
-                                   name="studentId"
-                                   id="studentId"
-                                   placeholder="Enter student ID">
-
-                        </div>
-
-                    </div>
+                    <label>
+                        USER NAME
+                    </label>
 
 
-                    <div class="input-group">
+                    <div class="field-box">
 
-                        <label>Student Name</label>
+                        <i class="fa-solid fa-user"></i>
 
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-user"></i>
-
-                            <input type="text"
-                                   name="studentName"
-                                   id="studentName"
-                                   placeholder="Enter your name">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Password</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-lock"></i>
-
-                            <input type="password"
-                                   name="studentPassword"
-                                   id="studentPassword"
-                                   placeholder="Enter password">
-
-                            <button type="button"
-                                    class="password-toggle"
-                                    data-target="studentPassword">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
+                        <input type="text"
+                               name="userName"
+                               placeholder="Enter your full name"
+                               autocomplete="name"
+                               required>
 
                     </div>
 
                 </div>
 
 
-                <!-- TEACHER LOGIN -->
 
-                <div id="teacherLoginFields"
-                     class="login-fields"
-                     style="display:none;">
+                <div class="field">
 
-                    <div class="input-group">
-
-                        <label>Teacher ID</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-id-badge"></i>
-
-                            <input type="number"
-                                   name="teacherId"
-                                   id="teacherId"
-                                   placeholder="Enter teacher ID">
-
-                        </div>
-
-                    </div>
+                    <label>
+                        EMAIL ADDRESS
+                    </label>
 
 
-                    <div class="input-group">
+                    <div class="field-box">
 
-                        <label>User ID</label>
+                        <i class="fa-solid fa-envelope"></i>
 
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-user-tag"></i>
-
-                            <input type="number"
-                                   name="userId"
-                                   id="userId"
-                                   placeholder="Enter user ID">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Password</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-lock"></i>
-
-                            <input type="password"
-                                   name="teacherPassword"
-                                   id="teacherPassword"
-                                   placeholder="Enter password">
-
-                            <button type="button"
-                                    class="password-toggle"
-                                    data-target="teacherPassword">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
+                        <input type="email"
+                               name="userEmail"
+                               placeholder="Enter your email address"
+                               autocomplete="email"
+                               required>
 
                     </div>
 
                 </div>
 
-
-                <!-- ADMIN LOGIN -->
-
-                <div id="adminLoginFields"
-                     class="login-fields"
-                     style="display:none;">
-
-                    <div class="admin-login-badge">
-
-                        <i class="fa-solid fa-shield-halved"></i>
-
-                        <div>
-                            <strong>Administrator Access</strong>
-                            <span>Authorized personnel only</span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Username</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-user-shield"></i>
-
-                            <input type="text"
-                                   name="adminUsername"
-                                   id="adminUsername"
-                                   placeholder="Enter admin username">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Password</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-key"></i>
-
-                            <input type="password"
-                                   name="adminPassword"
-                                   id="adminPassword"
-                                   placeholder="Enter admin password">
-
-                            <button type="button"
-                                    class="password-toggle"
-                                    data-target="adminPassword">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
 
 
                 <button type="submit"
-                        class="login-button">
+                        class="auth-submit">
 
-                    <span>Sign In</span>
+                    <span>
+                        Continue as User
+                    </span>
 
                     <i class="fa-solid fa-arrow-right"></i>
 
                 </button>
 
+
             </form>
 
 
-            <div class="form-footer">
 
-                <p>
+            <!-- =================================================
+                 TEACHER LOGIN FORM
+                 ================================================= -->
+
+            <form action="LoginServlet"
+                  method="post"
+                  id="teacherForm"
+                  class="role-form">
+
+
+                <input type="hidden"
+                       name="role"
+                       value="TEACHER">
+
+
+                <div class="field">
+
+                    <label>
+                        TEACHER NAME
+                    </label>
+
+
+                    <div class="field-box">
+
+                        <i class="fa-solid fa-chalkboard-user"></i>
+
+                        <input type="text"
+                               name="teacherName"
+                               placeholder="Enter teacher name"
+                               autocomplete="name"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="field">
+
+                    <label>
+                        PHONE NUMBER
+                    </label>
+
+
+                    <div class="field-box">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        <input type="tel"
+                               id="teacherPhone"
+                               name="teacherPhone"
+                               placeholder="Enter phone number"
+                               maxlength="10"
+                               inputmode="numeric"
+                               autocomplete="tel"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+
+                <button type="submit"
+                        class="auth-submit teacher-submit">
+
+                    <span>
+                        Continue as Teacher
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 ADMIN LOGIN FORM
+                 ================================================= -->
+
+            <form action="LoginServlet"
+                  method="post"
+                  id="adminForm"
+                  class="role-form">
+
+
+                <input type="hidden"
+                       name="role"
+                       value="ADMIN">
+
+
+                <!-- ADMIN WARNING -->
+
+                <div class="admin-warning">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+
+                        <strong>
+                            Administrator Access
+                        </strong>
+
+                        <span>
+                            Authorized administrator access only.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ADMIN USERNAME -->
+
+                <div class="field">
+
+                    <label>
+                        ADMIN USERNAME
+                    </label>
+
+
+                    <div class="field-box">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                        <input type="text"
+                               name="adminUsername"
+                               placeholder="Enter admin username"
+                               autocomplete="username"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ADMIN PASSWORD -->
+
+                <div class="field">
+
+                    <label>
+                        ADMIN PASSWORD
+                    </label>
+
+
+                    <div class="field-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password"
+                               id="adminPassword"
+                               name="adminPassword"
+                               placeholder="Enter admin password"
+                               autocomplete="current-password"
+                               required>
+
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="adminPassword"
+                                aria-label="Show password">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <button type="submit"
+                        class="auth-submit admin-submit">
+
+                    <span>
+                        Enter Admin Portal
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 REGISTER LINK
+                 ================================================= -->
+
+            <div class="auth-switch">
+
+                <span>
                     Don't have an account?
+                </span>
 
-                    <a href="${pageContext.request.contextPath}/register.jsp">
-                        Create account
-                    </a>
-                </p>
+                <a href="register.jsp">
+                    Create Account
+                </a>
 
             </div>
+
+
+
+            <!-- =================================================
+                 SECURITY
+                 ================================================= -->
+
+            <div class="security-text">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <span>
+                    Secure access • Capacity Connect
+                </span>
+
+            </div>
+
 
         </div>
 
     </div>
 
+
 </div>
 
 
-<script src="js/auth.js"></script>
+
+<!-- =========================================================
+     LOGIN JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    const roleTabs =
+        document.querySelectorAll(".role-tab");
+
+
+    const userForm =
+        document.getElementById("studentForm");
+
+
+    const teacherForm =
+        document.getElementById("teacherForm");
+
+
+    const adminForm =
+        document.getElementById("adminForm");
+
+
+    function showForm(role) {
+
+
+        /* Remove active tab */
+
+        roleTabs.forEach(function(tab) {
+
+            tab.classList.remove("active");
+
+        });
+
+
+        /* Hide all forms */
+
+        userForm.classList.remove("active");
+
+        teacherForm.classList.remove("active");
+
+        adminForm.classList.remove("active");
+
+
+        /* Show selected form */
+
+        if (role === "USER") {
+
+            userForm.classList.add("active");
+
+        }
+
+
+        else if (role === "TEACHER") {
+
+            teacherForm.classList.add("active");
+
+        }
+
+
+        else if (role === "ADMIN") {
+
+            adminForm.classList.add("active");
+
+        }
+
+
+        /* Activate selected tab */
+
+        roleTabs.forEach(function(tab) {
+
+            const radio =
+                tab.querySelector("input");
+
+            if (radio &&
+                radio.value === role) {
+
+                tab.classList.add("active");
+
+                radio.checked = true;
+
+            }
+
+        });
+
+    }
+
+
+    /* ROLE CLICK */
+
+    roleTabs.forEach(function(tab) {
+
+        tab.addEventListener("click", function() {
+
+            const radio =
+                tab.querySelector("input");
+
+            if (radio) {
+
+                showForm(radio.value);
+
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       PASSWORD SHOW / HIDE
+       ===================================================== */
+
+    const passwordButtons =
+        document.querySelectorAll(".password-toggle");
+
+
+    passwordButtons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+
+            const targetId =
+                button.getAttribute("data-target");
+
+
+            const passwordInput =
+                document.getElementById(targetId);
+
+
+            if (!passwordInput) {
+                return;
+            }
+
+
+            const icon =
+                button.querySelector("i");
+
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+
+
+                if (icon) {
+
+                    icon.classList.remove("fa-eye");
+
+                    icon.classList.add("fa-eye-slash");
+
+                }
+
+                button.setAttribute(
+                    "aria-label",
+                    "Hide password"
+                );
+
+            }
+
+            else {
+
+                passwordInput.type = "password";
+
+
+                if (icon) {
+
+                    icon.classList.remove("fa-eye-slash");
+
+                    icon.classList.add("fa-eye");
+
+                }
+
+                button.setAttribute(
+                    "aria-label",
+                    "Show password"
+                );
+
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       TEACHER PHONE VALIDATION
+       ===================================================== */
+
+    const teacherPhone =
+        document.getElementById("teacherPhone");
+
+
+    if (teacherPhone) {
+
+        teacherPhone.addEventListener(
+            "input",
+            function() {
+
+                this.value =
+                    this.value.replace(/\D/g, "");
+
+
+                if (this.value.length > 10) {
+
+                    this.value =
+                        this.value.substring(0, 10);
+
+                }
+
+            }
+        );
+
+    }
+
+
+});
+
+
+</script>
+
 
 </body>
 

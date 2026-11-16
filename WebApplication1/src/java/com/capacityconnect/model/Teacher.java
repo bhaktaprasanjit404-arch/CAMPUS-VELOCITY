@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.capacityconnect.model;
 
 public class Teacher {
@@ -10,7 +6,6 @@ public class Teacher {
     private int userId;
     private String name;
     private String email;
-
     private String qualification;
     private String specialization;
     private String phone;
@@ -19,14 +14,13 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(int id, int userId,
-                   String qualification,
-                   String specialization,
-                   String phone,
-                   String bio) {
-
+    public Teacher(int id, String name, int userId, String email,
+                   String qualification, String specialization,
+                   String phone, String bio) {
         this.id = id;
+        this.name = name;
         this.userId = userId;
+        this.email = email;
         this.qualification = qualification;
         this.specialization = specialization;
         this.phone = phone;
@@ -40,7 +34,6 @@ public class Teacher {
                    String specialization,
                    String phone,
                    String bio) {
-
         this.id = id;
         this.userId = userId;
         this.name = name;

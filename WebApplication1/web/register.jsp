@@ -2,146 +2,412 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Create Account | Capacity Connect</title>
 
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <link rel="stylesheet"
-          href="css/auth.css">
-
 </head>
 
 <body>
 
-<div class="auth-page register-page">
+<div class="auth-page">
 
-    <div class="background-shape shape-one"></div>
-    <div class="background-shape shape-two"></div>
-    <div class="background-shape shape-three"></div>
+    <!-- LEFT SIDE -->
+    <div class="auth-visual">
 
-    <div class="auth-container">
+        <div class="visual-overlay"></div>
 
+        <div class="visual-content">
 
-        <!-- LEFT SIDE -->
-
-        <div class="auth-showcase">
-
-            <div class="brand">
-
-                <div class="brand-icon">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-
-                <div>
-                    <h2>CAPACITY</h2>
-                    <span>CONNECT</span>
-                </div>
-
+            <div class="brand-small">
+                <span class="brand-dot"></span>
+                CAPACITY CONNECT
             </div>
 
+            <h1>
+                Build your
+                <span>next level.</span>
+            </h1>
 
-            <div class="showcase-content">
+            <p>
+                Learn skills. Share knowledge.
+                Build your future with Capacity Connect.
+            </p>
 
-                <span class="mini-label">
-
-                    <i class="fa-solid fa-rocket"></i>
-
-                    START YOUR JOURNEY
-
-                </span>
-
-
-                <h1>
-
-                    Build your
-                    <span>future.</span>
-
-                </h1>
-
-
-                <p>
-
-                    Join Capacity Connect and unlock
-                    a smarter digital learning experience.
-
-                </p>
-
-
-                <div class="register-benefits">
-
-                    <div>
-
-                        <i class="fa-solid fa-circle-check"></i>
-
-                        Access learning resources
-
-                    </div>
-
-
-                    <div>
-
-                        <i class="fa-solid fa-circle-check"></i>
-
-                        Learn from expert teachers
-
-                    </div>
-
-
-                    <div>
-
-                        <i class="fa-solid fa-circle-check"></i>
-
-                        Track your progress
-
-                    </div>
-
-
-                    <div>
-
-                        <i class="fa-solid fa-circle-check"></i>
-
-                        Earn certificates
-
-                    </div>
-
-                </div>
-
+            <div class="visual-bottom">
+                <span>● DIGITAL CAPACITY BUILDING</span>
             </div>
 
         </div>
 
+    </div>
 
-        <!-- FORM -->
 
-        <div class="auth-form-area register-form-area">
+    <!-- RIGHT SIDE -->
+    <div class="auth-panel">
 
-            <div class="form-header">
+        <div class="auth-box">
 
-                <span class="welcome">
+            <div class="auth-top">
+
+                <span class="eyebrow">
                     GET STARTED
                 </span>
 
-                <h2>Create your account</h2>
+                <h2>Create account.</h2>
 
                 <p>
-                    Choose your account type and fill in your details.
+                    Choose how you want to join Capacity Connect.
                 </p>
 
             </div>
 
 
+            <!-- ROLE SELECTOR -->
+            <div class="role-selector">
+
+                <button type="button"
+                        class="role-btn active"
+                        data-role="STUDENT"
+                        id="studentRoleBtn">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                    <span>User</span>
+
+                </button>
+
+
+                <button type="button"
+                        class="role-btn"
+                        data-role="TEACHER"
+                        id="teacherRoleBtn">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                    <span>Teacher</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- ================= USER FORM ================= -->
+
+            <form action="RegisterServlet"
+                  method="post"
+                  id="studentForm"
+                  class="register-form active-form">
+
+                <input type="hidden"
+                       name="role"
+                       value="STUDENT">
+
+
+                <div class="form-heading">
+
+                    <div>
+                        <h3>Create your learner account</h3>
+                        <p>Join courses, resources and learning programs.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="studentName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <input type="text"
+                               id="studentName"
+                               name="name"
+                               placeholder="Enter your full name"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="studentEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input type="email"
+                               id="studentEmail"
+                               name="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="studentPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password"
+                               id="studentPassword"
+                               name="password"
+                               placeholder="Create a password"
+                               required>
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="studentPassword">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="create-btn">
+
+                    <span>Create User Account</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- ================= TEACHER FORM ================= -->
+
+            <form action="RegisterServlet"
+                  method="post"
+                  id="teacherForm"
+                  class="register-form">
+
+                <input type="hidden"
+                       name="role"
+                       value="TEACHER">
+
+
+                <div class="form-heading">
+
+                    <div>
+                        <h3>Create your teacher account</h3>
+                        <p>Share your expertise with learners.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label for="teacherName">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-regular fa-user"></i>
+
+                            <input type="text"
+                                   id="teacherName"
+                                   name="name"
+                                   placeholder="Teacher name"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="teacherPhone">
+                            Phone Number
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input type="tel"
+                                   id="teacherPhone"
+                                   name="phone"
+                                   placeholder="Phone number"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="teacherEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input type="email"
+                               id="teacherEmail"
+                               name="email"
+                               placeholder="Teacher email"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="two-column">
+
+                    <div class="input-group">
+
+                        <label for="qualification">
+                            Qualification
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-graduation-cap"></i>
+
+                            <input type="text"
+                                   id="qualification"
+                                   name="qualification"
+                                   placeholder="e.g. M.Tech"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="specialization">
+                            Specialization
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="fa-solid fa-code"></i>
+
+                            <input type="text"
+                                   id="specialization"
+                                   name="specialization"
+                                   placeholder="e.g. Java, AI"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="teacherBio">
+                        Short Bio
+                    </label>
+
+                    <div class="input-wrapper textarea-wrapper">
+
+                        <i class="fa-regular fa-message"></i>
+
+                        <textarea id="teacherBio"
+                                  name="bio"
+                                  placeholder="Tell learners about your experience..."
+                                  rows="3"></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="teacherPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password"
+                               id="teacherPassword"
+                               name="password"
+                               placeholder="Create a password"
+                               required>
+
+                        <button type="button"
+                                class="password-toggle"
+                                data-target="teacherPassword">
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="create-btn">
+
+                    <span>Create Teacher Account</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- ERROR MESSAGE -->
+
             <% if (request.getAttribute("error") != null) { %>
 
-                <div class="message error-message">
+                <div class="error-message">
 
                     <i class="fa-solid fa-circle-exclamation"></i>
 
@@ -154,221 +420,15 @@
             <% } %>
 
 
-            <!-- ACCOUNT TYPE -->
+            <!-- LOGIN -->
 
-            <div class="role-selector">
+            <div class="login-link">
 
-                <button type="button"
-                        class="role-card active"
-                        data-register-role="STUDENT">
+                Already have an account?
 
-                    <i class="fa-solid fa-user-graduate"></i>
-
-                    <span>Student</span>
-
-                </button>
-
-
-                <button type="button"
-                        class="role-card"
-                        data-register-role="TEACHER">
-
-                    <i class="fa-solid fa-chalkboard-user"></i>
-
-                    <span>Teacher</span>
-
-                </button>
-
-            </div>
-
-
-            <form action="${pageContext.request.contextPath}/RegisterServlet"
-                  method="post"
-                  id="registerForm">
-
-
-                <input type="hidden"
-                       name="role"
-                       id="registerRole"
-                       value="STUDENT">
-
-
-                <!-- COMMON USERS TABLE DATA -->
-
-                <div class="input-group">
-
-                    <label>Full Name</label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-user"></i>
-
-                        <input type="text"
-                               name="name"
-                               placeholder="Enter your full name"
-                               required>
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>Email Address</label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-envelope"></i>
-
-                        <input type="email"
-                               name="email"
-                               placeholder="Enter your email"
-                               required>
-
-                    </div>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>Password</label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-lock"></i>
-
-                        <input type="password"
-                               name="password"
-                               id="registerPassword"
-                               placeholder="Create a password"
-                               required>
-
-                        <button type="button"
-                                class="password-toggle"
-                                data-target="registerPassword">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- TEACHER TABLE DATA -->
-
-                <div id="teacherRegisterFields"
-                     class="teacher-register-fields">
-
-
-                    <div class="input-group">
-
-                        <label>Qualification</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-graduation-cap"></i>
-
-                            <input type="text"
-                                   name="qualification"
-                                   placeholder="e.g. MCA, M.Tech">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Specialization</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-code"></i>
-
-                            <input type="text"
-                                   name="specialization"
-                                   placeholder="e.g. Java, AI, Web Development">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Phone</label>
-
-                        <div class="input-box">
-
-                            <i class="fa-solid fa-phone"></i>
-
-                            <input type="text"
-                                   name="phone"
-                                   placeholder="Enter phone number">
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="input-group">
-
-                        <label>Bio</label>
-
-                        <div class="input-box textarea-box">
-
-                            <i class="fa-solid fa-align-left"></i>
-
-                            <textarea name="bio"
-                                      placeholder="Tell students about yourself"></textarea>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="terms">
-
-                    <input type="checkbox"
-                           id="terms"
-                           required>
-
-                    <label for="terms">
-                        I agree to the platform terms and conditions.
-                    </label>
-
-                </div>
-
-
-                <button type="submit"
-                        class="login-button">
-
-                    <span>Create Account</span>
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </button>
-
-            </form>
-
-
-            <div class="form-footer">
-
-                <p>
-
-                    Already have an account?
-
-                    <a href="${pageContext.request.contextPath}/login.jsp">
-                        Sign in
-                    </a>
-
-                </p>
+                <a href="login.jsp">
+                    Sign in
+                </a>
 
             </div>
 
@@ -379,8 +439,118 @@
 </div>
 
 
-<script src="js/auth.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const studentRoleBtn = document.getElementById("studentRoleBtn");
+    const teacherRoleBtn = document.getElementById("teacherRoleBtn");
+
+    const studentForm = document.getElementById("studentForm");
+    const teacherForm = document.getElementById("teacherForm");
+
+
+    /* ==============================
+       STUDENT / USER BUTTON
+    ============================== */
+
+    studentRoleBtn.addEventListener("click", function () {
+
+        // Button active state
+        studentRoleBtn.classList.add("active");
+        teacherRoleBtn.classList.remove("active");
+
+        // Form switching
+        studentForm.classList.add("active-form");
+        teacherForm.classList.remove("active-form");
+
+    });
+
+
+    /* ==============================
+       TEACHER BUTTON
+    ============================== */
+
+    teacherRoleBtn.addEventListener("click", function () {
+
+        // Button active state
+        teacherRoleBtn.classList.add("active");
+        studentRoleBtn.classList.remove("active");
+
+        // Form switching
+        teacherForm.classList.add("active-form");
+        studentForm.classList.remove("active-form");
+
+    });
+
+
+    /* ==============================
+       PASSWORD SHOW / HIDE
+    ============================== */
+
+    const passwordButtons = document.querySelectorAll(".password-toggle");
+
+    passwordButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const targetId = button.getAttribute("data-target");
+            const passwordInput = document.getElementById(targetId);
+
+            if (!passwordInput) {
+                return;
+            }
+
+            const icon = button.querySelector("i");
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+
+                if (icon) {
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                }
+
+            } else {
+
+                passwordInput.type = "password";
+
+                if (icon) {
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                }
+
+            }
+
+        });
+
+    });
+
+
+    /* ==============================
+       TEACHER PHONE VALIDATION
+    ============================== */
+
+    const teacherPhone = document.getElementById("teacherPhone");
+
+    if (teacherPhone) {
+
+        teacherPhone.addEventListener("input", function () {
+
+            // Only numbers
+            this.value = this.value.replace(/\D/g, "");
+
+            // Maximum 10 digits
+            if (this.value.length > 10) {
+                this.value = this.value.substring(0, 10);
+            }
+
+        });
+
+    }
+
+});
+</script>
 
 </body>
-
 </html>
