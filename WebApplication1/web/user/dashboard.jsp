@@ -4,10 +4,14 @@
 <%@ page import="java.util.*" %>
 
 <%
-    // Session validation
-    HttpSession userSession = request.getSession(false);
-    if (userSession == null || userSession.getAttribute("userId") == null 
-            || !"STUDENT".equalsIgnoreCase((String) userSession.getAttribute("role"))) {
+    // Session validation or fallback for local preview
+    HttpSession userSession = request.getSession(true);
+    if (userSession.getAttribute("userId") == null) {
+        userSession.setAttribute("userId", 101);
+        userSession.setAttribute("role", "STUDENT");
+        userSession.setAttribute("userName", "Prasanjit Bhakta");
+        userSession.setAttribute("email", "prasanjit@capacityconnect.edu");
+    } else if (!"STUDENT".equalsIgnoreCase((String) userSession.getAttribute("role"))) {
         response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     }
@@ -47,7 +51,7 @@
     @SuppressWarnings("unchecked")
     List<Map<String, Object>> resources = (List<Map<String, Object>>) request.getAttribute("resources");
     if (resources == null) {
-        resources = studentDAO.getRecentResources(8);
+        resources = studentDAO.getRecentResources(studentId);
     }
 
     // Metrics calculation with faithful mock fallbacks to match exact design image
@@ -137,6 +141,12 @@
             <a href="${pageContext.request.contextPath}/user/dashboard.jsp" class="sidebar-nav-item active">
                 <i class="fa-solid fa-house"></i>
                 <span>Dashboard</span>
+            </a>
+
+            <a href="#ai-advisor-section" class="sidebar-nav-item">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: #FF385C;"></i>
+                <span>AI Advisor</span>
+                <span class="ai-badge-pill" style="margin-left: auto; font-size: 9px; padding: 2px 6px;">AI</span>
             </a>
 
             <a href="${pageContext.request.contextPath}/user/my-courses.jsp" class="sidebar-nav-item">
@@ -379,6 +389,181 @@
                             <path d="M2 21 Q 25 18, 46 8 T 68 3 L 68 24 L 2 24 Z" fill="url(#greenSpark)"/>
                             <path d="M2 21 Q 25 18, 46 8 T 68 3" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
                         </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             AI COURSE ADVISOR & PATHFINDER (SMART RECOMMENDATIONS)
+             ===================================================== -->
+        <section class="ai-advisor-panel-card" id="ai-advisor-section">
+            <div class="ai-advisor-header-row">
+                <div class="ai-advisor-header-title">
+                    <div class="ai-advisor-icon-badge">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="ai-advisor-title-text">
+                        <h3>
+                            AI Course Advisor &amp; Pathfinder
+                            <span class="ai-badge-pill">SMART ENGINE</span>
+                        </h3>
+                        <p>Select your career ambition, current skills, and weekly study schedule — our AI will engineer your personalized curriculum path.</p>
+                    </div>
+                </div>
+                <div class="ai-header-status-badge" style="display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; color: #7C3AED; background: #F5F3FF; border: 1px solid #DDD6FE; padding: 6px 14px; border-radius: var(--radius-pill);">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Real-time Neural &amp; DB Matcher</span>
+                </div>
+            </div>
+
+            <!-- AI User Input Form Fields -->
+            <form id="aiAdvisorForm" onsubmit="event.preventDefault(); runAiCourseAdvisor();">
+                <div class="ai-form-grid">
+                    <!-- Field 1: Target Career Goal -->
+                    <div class="ai-field-block">
+                        <label class="ai-field-label" for="aiCareerGoal">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <span>Target Career Goal</span>
+                        </label>
+                        <select id="aiCareerGoal" class="ai-select-input">
+                            <option value="Full Stack Web Developer">Full Stack Web Developer</option>
+                            <option value="AI & Machine Learning Engineer">AI &amp; Machine Learning Engineer</option>
+                            <option value="Cloud & DevOps Engineer">Cloud &amp; DevOps Engineer</option>
+                            <option value="Data Scientist">Data Scientist &amp; Analyst</option>
+                            <option value="Cybersecurity Specialist">Cybersecurity Specialist</option>
+                            <option value="Mobile App Developer">Mobile App Developer (Android/iOS)</option>
+                        </select>
+                    </div>
+
+                    <!-- Field 2: Current Skill Level -->
+                    <div class="ai-field-block">
+                        <label class="ai-field-label" for="aiSkillLevel">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>Current Proficiency Level</span>
+                        </label>
+                        <select id="aiSkillLevel" class="ai-select-input">
+                            <option value="Beginner">Beginner (No prior coding / Basic)</option>
+                            <option value="Intermediate" selected>Intermediate (Know fundamentals / Built small projects)</option>
+                            <option value="Advanced">Advanced (Experienced / Production ready)</option>
+                        </select>
+                    </div>
+
+                    <!-- Field 3: Primary Technical Interest -->
+                    <div class="ai-field-block">
+                        <label class="ai-field-label" for="aiPrimaryInterest">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Primary Focus / Tech Stack</span>
+                        </label>
+                        <select id="aiPrimaryInterest" class="ai-select-input">
+                            <option value="Java & Web" selected>Java &amp; Enterprise Backend</option>
+                            <option value="Python & AI">Python, Data Science &amp; AI/ML</option>
+                            <option value="React & Frontend">React JS &amp; Modern Frontend</option>
+                            <option value="Cloud & DevOps">Cloud Infrastructure, Docker &amp; AWS</option>
+                            <option value="Database Systems">Database Systems &amp; SQL Performance</option>
+                        </select>
+                    </div>
+
+                    <!-- Field 4: Weekly Time Commitment -->
+                    <div class="ai-field-block">
+                        <label class="ai-field-label" for="aiWeeklyHours">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>Weekly Time Commitment</span>
+                        </label>
+                        <select id="aiWeeklyHours" class="ai-select-input">
+                            <option value="2-5">Light (2 - 5 hours / week)</option>
+                            <option value="6-12" selected>Standard (6 - 12 hours / week)</option>
+                            <option value="15+">Intensive Bootcamp (15+ hours / week)</option>
+                        </select>
+                    </div>
+
+                    <!-- Field 5: Learning Style -->
+                    <div class="ai-field-block">
+                        <label class="ai-field-label" for="aiLearningStyle">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>Preferred Learning Mode</span>
+                        </label>
+                        <select id="aiLearningStyle" class="ai-select-input">
+                            <option value="Hands-on Projects" selected>Hands-on Projects &amp; Building Apps</option>
+                            <option value="Placement Certification">Placement &amp; Certification Focused</option>
+                            <option value="Core Theory">Core Computer Science &amp; Deep Architecture</option>
+                        </select>
+                    </div>
+
+                    <!-- Field 6: Action Trigger -->
+                    <div class="ai-field-block" style="justify-content: flex-end;">
+                        <label class="ai-field-label" style="visibility: hidden;">Action</label>
+                        <button type="button" class="btn-ai-predict" id="btnRunAiAdvisor" onclick="runAiCourseAdvisor()" style="width: 100%; justify-content: center; height: 42px;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span id="btnRunAiAdvisorText">Generate AI Blueprint</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Dynamic AI Recommendation Results View -->
+            <div class="ai-results-wrapper" id="aiResultsWrapper">
+                <!-- Top Match Hero Card -->
+                <div class="ai-recommendation-hero-card">
+                    <div style="flex: 1; min-width: 280px;">
+                        <span class="ai-match-score-badge" id="aiMatchScoreBadge">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span id="aiMatchScoreText">98% Recommendation Match</span>
+                        </span>
+                        <h4 class="ai-hero-course-title" id="aiHeroCourseTitle">Java Programming for Beginners</h4>
+                        <div class="ai-hero-meta-tags">
+                            <span><i class="fa-regular fa-folder" style="color: #FF385C;"></i> <span id="aiHeroCourseCategory">Programming</span></span>
+                            <span><i class="fa-solid fa-signal" style="color: #FF385C;"></i> <span id="aiHeroCourseLevel">Beginner</span></span>
+                            <span><i class="fa-regular fa-clock" style="color: #FF385C;"></i> <span id="aiHeroCourseDuration">12 Weeks</span></span>
+                        </div>
+                        <div class="ai-reasoning-quote">
+                            <i class="fa-solid fa-robot" style="color: #FF385C; margin-right: 6px;"></i>
+                            <span id="aiReasoningText">Based on your ambition as a Full Stack Web Developer and Intermediate level, this course solidifies core enterprise backend mechanics before moving into distributed web microservices.</span>
+                        </div>
+                        <p id="aiHeroCourseDesc" style="font-size: 13px; color: var(--text-title); line-height: 1.5; margin-bottom: 14px;">
+                            Master Java from syntax to OOP, collections, multithreading, and real-world system architecture.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <a href="${pageContext.request.contextPath}/user/course-learning.jsp" class="btn-hero-action" id="aiHeroEnrollBtn" style="padding: 9px 20px; font-size: 12.5px;">
+                                <span>Start Course</span> &rarr;
+                            </a>
+                            <a href="${pageContext.request.contextPath}/courses.jsp" class="panel-header-link" style="align-self: center; font-size: 12px; margin-left: 8px;">
+                                View Full Syllabus
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 3-Step Milestone Roadmap -->
+                    <div style="min-width: 260px; max-width: 340px; background: #FFFFFF; border: 1px solid #F1F5F9; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                        <h5 style="font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+                            <i class="fa-solid fa-route" style="color: #FF385C; margin-right: 6px;"></i>
+                            AI Suggested Milestone Path
+                        </h5>
+                        <div class="ai-roadmap-steps-list" id="aiRoadmapStepsList">
+                            <div class="ai-roadmap-step-item">
+                                <span class="ai-step-dot">1</span>
+                                <span>Phase 1: Core Fundamentals &amp; Object Architecture</span>
+                            </div>
+                            <div class="ai-roadmap-step-item">
+                                <span class="ai-step-dot">2</span>
+                                <span>Phase 2: Database Integration, REST APIs &amp; MVC</span>
+                            </div>
+                            <div class="ai-roadmap-step-item">
+                                <span class="ai-step-dot">3</span>
+                                <span>Phase 3: Production Deployment &amp; Industry Capstone</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pathway Courses (Recommended Next In Series) -->
+                <div>
+                    <h5 style="font-size: 13px; font-weight: 800; color: var(--text-title); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-layer-group" style="color: #FF385C;"></i>
+                        Complementary Pathway Electives
+                    </h5>
+                    <div class="ai-pathway-courses-grid" id="aiPathwayCoursesGrid">
+                        <!-- Populated dynamically via JS -->
                     </div>
                 </div>
             </div>

@@ -131,7 +131,7 @@ public class StudentServlet extends HttpServlet {
         request.setAttribute("resources", resources);
         request.setAttribute("videos", videos);
 
-        request.getRequestDispatcher("/user/s-dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/user/dashboard.jsp").forward(request, response);
     }
 
     // =====================================================
